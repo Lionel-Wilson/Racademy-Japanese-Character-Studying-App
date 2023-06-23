@@ -1,7 +1,7 @@
 import { Component, NgModule} from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { FormControl } from '@angular/forms';
+import { FormControl, NgForm } from '@angular/forms';
 import { catchError, retry } from 'rxjs/operators';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -22,22 +22,26 @@ export class QuizComponent {
   public index = 0;
   public canClickNext = false;
 
+  public start = false;
+
   public userResult :string|null = null;
   public userResultColor = "";
 
-  constructor(private http: HttpClient) { 
-    this.getData().subscribe((results => {
-      this.data = results;
-      this.numberOfQuestions = this.data.length;
-    }))
+  constructor(private http: HttpClient) { }
+
+ public getData(numberOfQuestionSetByUser:any){
+  this.http.get<QuizItem[]>(this.configUrl,{params:numberOfQuestionSetByUser}).subscribe((results => {
+    this.data = results;
+    this.numberOfQuestions = this.data.length;
+    this.start = true;
+  }))
 }
 
-
- public getData() : Observable<QuizItem[]>{
-  return this.http.get<QuizItem[]>(this.configUrl);
+public getQuestions( numberOfQuestionSetByUser: NgForm ){
+  this.getData(numberOfQuestionSetByUser.value);
 }
 
-  public checkAnswers(){
+public checkAnswers(){
     if(this.data[this.index].answer == this.userAnswer.value && this.canClickNext ==false){
       this.userResult = "Correct!";
       this.userResultColor = "green";

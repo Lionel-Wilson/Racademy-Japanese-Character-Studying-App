@@ -1,47 +1,60 @@
 <div class="main-containter">
-<div  class="quiz-container card">
-  <h1 >Hiragana Quiz</h1>
+  <div  class="quiz-container card">
+    <h1 >Hiragana Quiz</h1>
 
-  <p>Type the romaji for the Hiragana you know</p>
-  <br>
-  <div *ngIf="userResult">
-    <div  style="color: {{userResultColor}};">
-      {{userResult}}
-    </div>
-  </div>
-  <br>
-  <p>User Score - {{userScore}}/{{numberOfQuestions}}</p>
-  <br>
-
-
-  <form (submit)="checkAnswers()">
-      <h1 >{{data[index].hiragana}}</h1><br>
-      <label for="answer">Answer:</label><br>
-      <input type="text" id="answer" name="answer" [formControl]="userAnswer"><br>
-      <div *ngIf="canClickNext==false; else elseBlock">
-        <div style="text-align: center;">
-          <input type="submit" class="btn btn-primary" value="Check Answer"></div>
+    <!-- Generated after user choosers how many questions they want-->  
+    <div class="Quiz" *ngIf="start==true; else StartBlock">
+      <p>Type the romaji for the Hiragana you know</p>
+      <br>
+      <div *ngIf="userResult">
+        <div  style="color: {{userResultColor}};">
+          <p>{{userResult}}</p>
         </div>
-      <ng-template #elseBlock>
-        <div style="text-align: center;">
-          <input  type="button" class="btn btn-primary" (click)="nextQuestion()" value="Next">
-        </div></ng-template>
-  </form>
-  <br>
-  
+      </div>
+      <br>
+      <p>User Score - {{userScore}}/{{numberOfQuestions}}</p>
+      <br>
 
 
+      <form (submit)="checkAnswers()">
+          <h1 >{{data[index].hiragana}}</h1>
+          <br>
+          <input type="text" id="answer" name="answer" [formControl]="userAnswer">
+          <br>
+          <div *ngIf="canClickNext==false; else elseBlock">
+            <div style="text-align: center;">
+              <input type="submit" class="btn btn-primary btn-lg" value="Check Answer">
+            </div>
+          </div>
+          <ng-template #elseBlock>
+            <div style="text-align: center;">
+              <input  type="button" class="btn btn-primary btn-lg" (click)="nextQuestion()" value="Next">
+            </div>
+          </ng-template>
+      </form>
+      <br>
+    </div>
+      
+    <ng-template #StartBlock>
+      <p>Type how many questions you want want to do. Max is 90</p>
+      <br>
+      <form #startForm="ngForm" (ngSubmit)="getQuestions(startForm)">
+        <input type="number" name="numberOfQuestionSetByUser" ngModel required >
+        <br>
+        <button type="submit" class="btn btn-primary btn-lg">Start</button>
+      </form>
+      <br>
+    </ng-template>
 
 
-  
-  <div>
-    <p>By Lionel</p>
-    <p>Credit to Gee</p>
+      
+      <div>
+        <p>By <a target=”_blank” href="https://www.instagram.com/lionel_wilson/">Lionel</a></p>
+      </div>
+
+    
+
   </div>
-
-  
-
-</div>
 </div>
 
 
