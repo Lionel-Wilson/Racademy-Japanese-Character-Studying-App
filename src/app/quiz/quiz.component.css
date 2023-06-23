@@ -1,0 +1,27 @@
+p,label,h1,h2{
+    text-align: center;
+}
+.main-containter{
+    display: flex;
+    justify-content: center;
+    padding-top: 2em;
+}
+.quiz-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 25rem;
+}
+.table-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+form{
+    display: flex;
+    flex-direction: column;
+}
