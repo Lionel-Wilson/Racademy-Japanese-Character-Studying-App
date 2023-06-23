@@ -21,6 +21,7 @@ export class QuizComponent {
   public userScore = 0;
   public index = 0;
   public canClickNext = false;
+  public quizButtonText :string = "Check Answer";
 
   public start = false;
 
@@ -47,6 +48,8 @@ public checkAnswers(){
       this.userResultColor = "green";
       this.userScore+=1;
       this.canClickNext = true;
+      this.quizButtonText = "Next";
+      this.userAnswer.reset();
     }
     else if(this.data[this.index].answer != this.userAnswer.value){
       this.userResultColor = "red";
@@ -61,10 +64,21 @@ public checkAnswers(){
       this.index += 1;
       this.canClickNext = false;
     }
+    else if(this.quizButtonText==="Start Again"){
+      //restart game
+      this.userResult = "";
+      this.userResultColor = "";
+      this.userScore = 0;
+      this.canClickNext = false;
+      this.quizButtonText = "Check Answer";
+      this.userAnswer.reset();
+      this.start=false;
+    }
     else{
       this.userResult = "EXAM COMPLETE!";
+      this.quizButtonText = "Start Again";
       this.userResultColor = "gold";
-      this.canClickNext = false;
+      //this.canClickNext = false;
 
     }
 
