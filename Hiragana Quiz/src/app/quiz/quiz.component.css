@@ -1,28 +1,4 @@
-p,label,h1{
-    text-align: center;
-}
 
-
-
-h1{
-    font-size: 100px;
-}
-p{
-    font-size: 2rem;
-}
-
-.main-containter{
-    display: flex;
-    justify-content: center;
-    padding-top: 2em;
-}
-.quiz-container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    width: 50rem;
-}
 .table-container{
     display: flex;
     justify-content: center;
@@ -31,16 +7,3 @@ p{
 
 
 
-form{
-    display: flex;
-    flex-direction: column;
-}
-
-
-/*
-Ref - https://stackoverflow.com/questions/28261287/how-to-change-btn-color-in-bootstrap
-*/
-.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
-    background-color: #8064A2 !important;
-    border-color: #8064A2;
-}
