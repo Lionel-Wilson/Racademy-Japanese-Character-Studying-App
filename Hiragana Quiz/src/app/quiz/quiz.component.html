@@ -20,7 +20,7 @@
           <h1 >{{data[index].hiragana}}</h1>
           <br>
           <div style="display: flex;justify-content: center;">
-            <input type="text" id="answer" name="answer" [formControl]="userAnswer" style="max-width: 10rem;text-align: center;">
+            <input label="userAnswer" placeholder="userAnswer" type="text" id="answer" name="answer" [formControl]="userAnswer" style="max-width: 10rem;text-align: center;">
           </div>
           <br>
           <div *ngIf="canClickNext==false; else elseBlock">
@@ -30,7 +30,7 @@
           </div>
           <ng-template #elseBlock>
             <div style="text-align: center;">
-              <input  type="button" class="btn btn-primary btn-lg" (click)="nextQuestion()" [value]="quizButtonText">
+              <input title="quizButtonText" type="button" class="btn btn-primary btn-lg" (click)="nextQuestion()" [value]="quizButtonText">
             </div>
           </ng-template>
       </form>
@@ -41,7 +41,7 @@
       <p style="max-width: 35rem;">How many questions do you want? Max is 90</p>
       <br>
       <form #startForm="ngForm" (ngSubmit)="getQuestions(startForm)">
-        <input type="number" name="numberOfQuestionSetByUser" ngModel required >
+        <input title="numberOfQuestionSetByUser" type="number" name="numberOfQuestionSetByUser" ngModel required >
         <br>
         <button type="submit" class="btn btn-primary btn-lg">Start</button>
       </form>

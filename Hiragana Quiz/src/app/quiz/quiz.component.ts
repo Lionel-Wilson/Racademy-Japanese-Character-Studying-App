@@ -66,12 +66,12 @@ public checkAnswers(){
     }
     else if(this.quizButtonText==="Start Again"){
       //restart game
-      this.userResult = "";
+      this.userResult = null;
       this.userResultColor = "";
       this.userScore = 0;
       this.canClickNext = false;
       this.quizButtonText = "Check Answer";
-      this.userAnswer.reset();
+      this.userAnswer = new FormControl('');
       this.start=false;
     }
     else{

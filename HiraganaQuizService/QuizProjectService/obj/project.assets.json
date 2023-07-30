@@ -3943,9 +3943,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\General Files\\Self-learning Computer Science\\My Projects\\Hiragana Quiz Project\\HiraganaQuizService\\QuizProjectService\\QuizProjectService.csproj",
-      "projectName": "QuizProjectService",
-      "projectPath": "D:\\General Files\\Self-learning Computer Science\\My Projects\\Hiragana Quiz Project\\HiraganaQuizService\\QuizProjectService\\QuizProjectService.csproj",
+      "projectUniqueName": "D:\\General Files\\Self-learning Computer Science\\My Projects\\Hiragana Quiz Project\\HiraganaQuizService\\QuizProjectService\\HiraganaQuizService.csproj",
+      "projectName": "HiraganaQuizService",
+      "projectPath": "D:\\General Files\\Self-learning Computer Science\\My Projects\\Hiragana Quiz Project\\HiraganaQuizService\\QuizProjectService\\HiraganaQuizService.csproj",
       "packagesPath": "C:\\Users\\Lione\\.nuget\\packages\\",
       "outputPath": "D:\\General Files\\Self-learning Computer Science\\My Projects\\Hiragana Quiz Project\\HiraganaQuizService\\QuizProjectService\\obj\\",
       "projectStyle": "PackageReference",

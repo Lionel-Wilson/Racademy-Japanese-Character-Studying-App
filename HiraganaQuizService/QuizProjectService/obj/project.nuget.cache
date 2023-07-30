@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "eub6yNCDfgNmgJqe+r0WM7Oi/f5n1l008pvYpmuahv1it1rqhv4ktjtlNQ8qLKumB0EXoBIcYV0Fii8X9Z4fjg==",
+  "dgSpecHash": "YFxWdzG975nsUAii6ZJFJLLzWvpQ9Eu39/eYbSfyNLq16nVx26BxzQ6TDVyR5W9Em5q2ajANIVNG2jGKFWYyhA==",
   "success": true,
-  "projectFilePath": "D:\\General Files\\Self-learning Computer Science\\My Projects\\Hiragana Quiz Project\\HiraganaQuizService\\QuizProjectService\\QuizProjectService.csproj",
+  "projectFilePath": "D:\\General Files\\Self-learning Computer Science\\My Projects\\Hiragana Quiz Project\\HiraganaQuizService\\QuizProjectService\\HiraganaQuizService.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Lione\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\Lione\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
