@@ -1,6 +1,8 @@
-import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Quizitem } from 'src/app/shared/Interfaces/quizitem';
+import { DataService } from 'src/app/shared/services/data.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-welcome',
@@ -8,28 +10,13 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./welcome.component.css']
 })
 export class WelcomeComponent {
-  public data:QuizItem[]=[];
   public numberOfQuestions:number = 0; 
-  public configUrl = 'https://localhost:7013/Quiz';
+ 
+  constructor(private DataService:DataService, private router:Router) { }
 
-  constructor(private http: HttpClient) { }
-
-  public getData(numberOfQuestionSetByUser:any){
-    this.http.get<QuizItem[]>(this.configUrl,{params:numberOfQuestionSetByUser}).subscribe((results => {
-      this.data = results;
-      this.numberOfQuestions = this.data.length;
-    }))
+  public getQuestions( numberOfQuestionSetByUser: NgForm ){ 
+    this.DataService.getQuestionData(numberOfQuestionSetByUser.value);
+    this.router.navigate(['/Question']);
+    console.log("getting questinos...");
   }
-
-  public getQuestions( numberOfQuestionSetByUser: NgForm ){
-    this.getData(numberOfQuestionSetByUser.value);
-  }
-}
-
-
-
-interface QuizItem {
-  id: string;
-  hiragana: string;
-  answer: string;
 }
