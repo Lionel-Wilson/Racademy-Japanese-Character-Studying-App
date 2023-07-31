@@ -1,3 +1,4 @@
+import { Subscription, Subject, Observable } from 'rxjs';
 import { AfterViewInit, Component } from '@angular/core';
 import { Quizitem } from 'src/app/shared/Interfaces/quizitem';
 import { DataService } from 'src/app/shared/services/data.service';
@@ -10,10 +11,10 @@ import { DataService } from 'src/app/shared/services/data.service';
 
 
 export class QuestionComponent {
-  public questionsData :Quizitem[] =[] ;
+  public questionsData$ : Observable<Quizitem[]> = this.DataService.QuizData$;
 
   constructor(public DataService:DataService){
-    this.questionsData = this.DataService.QuizData;
+    this.questionsData$ = this.DataService.QuizData$;
   }
 
   }

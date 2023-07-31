@@ -17,6 +17,5 @@ export class WelcomeComponent {
   public getQuestions( numberOfQuestionSetByUser: NgForm ){ 
     this.DataService.getQuestionData(numberOfQuestionSetByUser.value);
     this.router.navigate(['/Question']);
-    console.log("getting questinos...");
   }
 }
