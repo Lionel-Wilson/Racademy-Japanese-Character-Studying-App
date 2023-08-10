@@ -1,3 +1,56 @@
-<p>question works!</p>
-<br />
-<p>{{ questionsData$ | json }}</p>
+<div class="main-containter">
+  <div class="quiz-container card">
+    <h2>Type the romaji for the Hiragana Below</h2>
+    <br />
+    <div class="question">
+      {{ questionData[index].hiragana }}
+    </div>
+    <div *ngIf="quizButtonText == 'Next'; else elseBlock">
+      <button class="btn btn-primary btn-lg" (click)="nextQuestion()">
+        {{ quizButtonText }}
+      </button>
+    </div>
+
+    <ng-template #elseBlock>
+      <button class="btn btn-primary btn-lg" (click)="endQuiz()">
+        {{ quizButtonText }}
+      </button>
+    </ng-template>
+
+    <!--
+    <div class="Quiz" *ngIf="start==true; else StartBlock">
+        <p>Type the romaji for the Hiragana you know</p>
+        <br>
+        <div *ngIf="userResult">
+          <div  style="color: {{userResultColor}};">
+            <p>{{userResult}}</p>
+          </div>
+        </div>
+        <br>
+        <p>User Score - {{userScore}}/{{numberOfQuestions}}</p>
+        <br>
+  
+  
+        <form (submit)="checkAnswers()">
+            <h1 >{{data[index].hiragana}}</h1>
+            <br>
+            <div style="display: flex;justify-content: center;">
+              <input label="userAnswer" placeholder="userAnswer" type="text" id="answer" name="answer" [formControl]="userAnswer" style="max-width: 10rem;text-align: center;">
+            </div>
+            <br>
+            <div *ngIf="canClickNext==false; else elseBlock">
+              <div style="text-align: center;">
+                <input type="submit" class="btn btn-primary btn-lg" [value]="quizButtonText">
+              </div>
+            </div>
+            <ng-template #elseBlock>
+              <div style="text-align: center;">
+                <input title="quizButtonText" type="button" class="btn btn-primary btn-lg" (click)="nextQuestion()" [value]="quizButtonText">
+              </div>
+            </ng-template>
+        </form>
+        <br>
+      </div>
+      -->
+  </div>
+</div>
