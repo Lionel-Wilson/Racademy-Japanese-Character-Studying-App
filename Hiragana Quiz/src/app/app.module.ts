@@ -8,13 +8,17 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { WelcomeComponent } from './quiz/welcome/welcome.component';
 import { QuestionComponent } from './quiz/question/question.component';
+import { NavbarComponent } from './shared/Components/navbar/navbar.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     QuizComponent,
     WelcomeComponent,
-    QuestionComponent
+    QuestionComponent,
+    NavbarComponent,
+
   ],
   imports: [
     BrowserModule,

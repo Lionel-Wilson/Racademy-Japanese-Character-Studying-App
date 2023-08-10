@@ -1,0 +1,21 @@
+nav{
+    background-color: #1e293b !important;
+    padding-top: 16px;
+    padding-bottom: 16px;
+}
+
+a{
+    color: white;
+    white-space: nowrap;
+}
+li :hover{
+    color: #90d1ed;
+}
+
+.active{
+    color: #fe5653 !important;;
+}
+
+.container-fluid{
+    max-width: 1260px;
+}
