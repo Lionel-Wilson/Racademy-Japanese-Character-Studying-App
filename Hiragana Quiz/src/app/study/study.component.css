@@ -43,9 +43,12 @@ p{
 }
 
 .study-button{
-    width:182.34px;
+    width:191.21px;
     margin: 5px;
     color: black;
+    border-radius: 30px;
+    padding: 25px,50px;
+
 }
 .study-button:hover{
     background-color: #90d1ed !important;
