@@ -1,4 +1,4 @@
-# Hiragana-Quiz
+# Racademy-Japanese-Character-Studying-App
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.0.
 A quick full stack hiragana quiz app I made for fun. Tech stack - Angular, .Net, Microsoft SQL Server
