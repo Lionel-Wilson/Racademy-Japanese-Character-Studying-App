@@ -10,6 +10,7 @@ import { WelcomeComponent } from './quiz/welcome/welcome.component';
 import { QuestionComponent } from './quiz/question/question.component';
 import { NavbarComponent } from './shared/Components/navbar/navbar.component';
 import { StudyComponent } from './study/study.component';
+import { FooterComponent } from './shared/Components/footer/footer.component';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { StudyComponent } from './study/study.component';
     QuestionComponent,
     NavbarComponent,
     StudyComponent,
+    FooterComponent,
 
   ],
   imports: [
