@@ -4,26 +4,6 @@ p,label,h1{
 
 
 
-h1{
-    font-size: 100px;
-}
-p{
-    font-size: 2rem;
-}
-
-.main-containter{
-    display: flex;
-    justify-content: center;
-    padding-top: 2em;
-}
-.quiz-container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    width: 50rem;
-}
-
 form{
     display: flex;
     flex-direction: column;

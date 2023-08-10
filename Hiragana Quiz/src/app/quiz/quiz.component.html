@@ -1,68 +1,83 @@
 <div class="main-containter">
-  <div  class="quiz-container card">
-    <h1 >Hiragana Quiz</h1>
+  <div class="quiz-container card">
+    <h1>Hiragana Quiz</h1>
 
-    <!-- Generated after user choosers how many questions they want-->  
-    <div class="Quiz" *ngIf="start==true; else StartBlock">
+    <!-- Generated after user choosers how many questions they want-->
+    <div class="Quiz" *ngIf="start == true; else StartBlock">
       <p>Type the romaji for the Hiragana you know</p>
-      <br>
+      <br />
       <div *ngIf="userResult">
-        <div  style="color: {{userResultColor}};">
-          <p>{{userResult}}</p>
+        <div style="color: {{ userResultColor }};">
+          <p>{{ userResult }}</p>
         </div>
       </div>
-      <br>
-      <p>User Score - {{userScore}}/{{numberOfQuestions}}</p>
-      <br>
-
+      <br />
+      <p>User Score - {{ userScore }}/{{ numberOfQuestions }}</p>
+      <br />
 
       <form (submit)="checkAnswers()">
-          <h1 >{{data[index].hiragana}}</h1>
-          <br>
-          <div style="display: flex;justify-content: center;">
-            <input label="userAnswer" placeholder="userAnswer" type="text" id="answer" name="answer" [formControl]="userAnswer" style="max-width: 10rem;text-align: center;">
+        <h1>{{ data[index].hiragana }}</h1>
+        <br />
+        <div style="display: flex; justify-content: center">
+          <input
+            label="userAnswer"
+            placeholder="userAnswer"
+            type="text"
+            id="answer"
+            name="answer"
+            [formControl]="userAnswer"
+            style="max-width: 10rem; text-align: center"
+          />
+        </div>
+        <br />
+        <div *ngIf="canClickNext == false; else elseBlock">
+          <div style="text-align: center">
+            <input
+              type="submit"
+              class="btn btn-primary btn-lg"
+              [value]="quizButtonText"
+            />
           </div>
-          <br>
-          <div *ngIf="canClickNext==false; else elseBlock">
-            <div style="text-align: center;">
-              <input type="submit" class="btn btn-primary btn-lg" [value]="quizButtonText">
-            </div>
+        </div>
+        <ng-template #elseBlock>
+          <div style="text-align: center">
+            <input
+              title="quizButtonText"
+              type="button"
+              class="btn btn-primary btn-lg"
+              (click)="nextQuestion()"
+              [value]="quizButtonText"
+            />
           </div>
-          <ng-template #elseBlock>
-            <div style="text-align: center;">
-              <input title="quizButtonText" type="button" class="btn btn-primary btn-lg" (click)="nextQuestion()" [value]="quizButtonText">
-            </div>
-          </ng-template>
+        </ng-template>
       </form>
-      <br>
+      <br />
     </div>
-      
+
     <ng-template #StartBlock>
-      <p style="max-width: 35rem;">How many questions do you want? Max is 90</p>
-      <br>
+      <p style="max-width: 35rem">How many questions do you want? Max is 90</p>
+      <br />
       <form #startForm="ngForm" (ngSubmit)="getQuestions(startForm)">
-        <input title="numberOfQuestionSetByUser" type="number" name="numberOfQuestionSetByUser" ngModel required >
-        <br>
+        <input
+          title="numberOfQuestionSetByUser"
+          type="number"
+          name="numberOfQuestionSetByUser"
+          ngModel
+          required
+        />
+        <br />
         <button type="submit" class="btn btn-primary btn-lg">Start</button>
       </form>
-      <br>
+      <br />
     </ng-template>
 
-
-      
-      <div>
-        <p>By <a target=”_blank” href="https://www.instagram.com/lionel_wilson/">Lionel</a></p>
-      </div>
-
-    
-
+    <div>
+      <p>
+        By
+        <a target="”_blank”" href="https://www.instagram.com/lionel_wilson/"
+          >Lionel</a
+        >
+      </p>
+    </div>
   </div>
 </div>
-
-
-
-
-
-      
-
-

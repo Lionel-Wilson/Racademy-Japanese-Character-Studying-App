@@ -1,7 +1,7 @@
 import { Subscription, Subject, Observable } from 'rxjs';
 import { AfterViewInit, Component } from '@angular/core';
 import { Quizitem } from 'src/app/shared/Interfaces/quizitem';
-import { DataService } from 'src/app/shared/services/data.service';
+import { DataService } from 'src/app/shared/Services/data.service';
 import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 

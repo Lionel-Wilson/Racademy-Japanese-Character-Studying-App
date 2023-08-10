@@ -9,6 +9,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { WelcomeComponent } from './quiz/welcome/welcome.component';
 import { QuestionComponent } from './quiz/question/question.component';
 import { NavbarComponent } from './shared/Components/navbar/navbar.component';
+import { StudyComponent } from './study/study.component';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { NavbarComponent } from './shared/Components/navbar/navbar.component';
     WelcomeComponent,
     QuestionComponent,
     NavbarComponent,
+    StudyComponent,
 
   ],
   imports: [

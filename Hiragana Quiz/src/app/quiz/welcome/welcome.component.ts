@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Quizitem } from 'src/app/shared/Interfaces/quizitem';
-import { DataService } from 'src/app/shared/services/data.service';
+import { DataService } from 'src/app/shared/Services/data.service';
 import { Router } from '@angular/router';
 
 @Component({
