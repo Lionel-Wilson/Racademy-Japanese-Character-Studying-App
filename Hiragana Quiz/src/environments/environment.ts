@@ -1,6 +1,6 @@
 export const environment = {
     production: false,
-    QuizApiUrl: 'https://localhost:7013/Quiz',
+
     firebase: {
         projectId: 'racademy-study-app',
         appId: '1:786345770345:web:bbbfc96c24ceb3012951f8',

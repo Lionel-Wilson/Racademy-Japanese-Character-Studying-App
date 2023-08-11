@@ -9,5 +9,5 @@ export const environment = {
     messagingSenderId: '786345770345',
     measurementId: 'G-HZFF04GJJV',
   },
-    QuizApiUrl: 'https://localhost:7013/Quiz'
+
 };
