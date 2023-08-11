@@ -36,6 +36,12 @@ export class DataService {
     else if( selection =='Katakana Dakuten'){
       this.getKatakanaDakuten();
     }
+    else if( selection =='Contracted Sounds'){
+      this.getHiraganacontracted();
+    }
+    else if( selection =='Double Consonants'){
+      console.log("Idk what to do with this");
+    }
     /*
     this.getHiragana();
     this.getHiraganacontracted()

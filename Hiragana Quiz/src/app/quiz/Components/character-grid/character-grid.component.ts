@@ -13,7 +13,7 @@ export class CharacterGridComponent {
   public rows :Array<number>=[];
   public columnsSelected: Character[][] =[];
   public charactersToBeTestedOn: Character[]=[];
-  public endCharacters: string[] = ["o","ko","so","to","no","ho","mo","yo","ro","wo","-n","go","zo","do","bo","po","vu"];
+  public endCharacters: string[] = ["o","ko","so","to","no","ho","mo","yo","ro","wo","-n","go","zo","do","bo","po","vu","kyo","syo","tyo","nyo","hyo","myo","ryo","gyo","zyo","dyo","zyo","byo","byo"];
 
  
   constructor(private DataService:DataService){
@@ -43,7 +43,7 @@ export class CharacterGridComponent {
         tempColumn.push(characterList[i]);
       }
     }
-    this.characters = tempCharacters;
+    this.characters = tempCharacters.slice().reverse();
 
     return
  }
