@@ -10,11 +10,12 @@ import { DataService } from 'src/app/shared/Services/data.service';
   styleUrls: ['./study.component.css']
 })
 export class StudyComponent {
-constructor(private router:Router){
+constructor(private router:Router,private DataService:DataService){
 
 }
 
 public startStudy(){
+  this.DataService.getCharactersforGrid();
   this.router.navigate(['/Question']);
 }
 }

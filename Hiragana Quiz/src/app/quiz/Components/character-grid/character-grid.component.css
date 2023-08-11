@@ -1,0 +1,49 @@
+.column {
+    padding: 0px;
+  }
+  
+  .character {
+
+    padding: 10px 10px;
+    width: 100px;
+
+    background-image: linear-gradient(to bottom right, #90d1ed, #55bdea);
+  }
+  p,h1{
+    margin: 0px;
+  }
+  
+  .grid-button{
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font: inherit;
+    color: inherit;
+    cursor: pointer;
+    outline: none;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-decoration: none;
+  }
+
+  .study-button{
+    width:191.21px;
+    margin: 5px;
+    color: black;
+    border-radius: 30px;
+    padding: 25px,50px;
+
+}
+.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+    background-color: #fe5653 !important;
+    border-color: #fe5653;
+    white-space: nowrap;
+}
+
+.study-button:hover{
+    background-color: #90d1ed !important;
+    border-color: #90d1ed !important;
+}
+  

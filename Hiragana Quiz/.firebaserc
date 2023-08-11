@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "racademy-study-app": {
+      "hosting": {
+        "QuizProject": [
+          "racademy-study-app"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "racademy-study-app"
+  }
+}

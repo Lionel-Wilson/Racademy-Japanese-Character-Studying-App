@@ -1,7 +1,8 @@
 <div class="main-containter">
   <div class="quiz-container card">
-    <h2>Type the romaji for the Hiragana Below</h2>
-    <br />
+    <h2>Select the columns you would like to study</h2>
+    <app-character-grid></app-character-grid>
+    <!--
     <div class="question">
       {{ questionData[index].hiragana }}
     </div>
@@ -17,7 +18,7 @@
       </button>
     </ng-template>
 
-    <!--
+    
     <div class="Quiz" *ngIf="start==true; else StartBlock">
         <p>Type the romaji for the Hiragana you know</p>
         <br>

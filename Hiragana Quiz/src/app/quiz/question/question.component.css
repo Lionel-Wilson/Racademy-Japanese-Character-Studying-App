@@ -15,13 +15,13 @@ p{
     display: flex;
     justify-content: center;
     padding-top: 2em;
+    padding-bottom: 2em;
 }
 .quiz-container{
     display: flex;
     justify-content: center;
     align-items: center;
-
-    width: 50rem;
+    width: 70rem;
 }
 
 form{

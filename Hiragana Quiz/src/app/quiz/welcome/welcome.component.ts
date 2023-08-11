@@ -15,7 +15,7 @@ export class WelcomeComponent {
   constructor(private DataService:DataService, private router:Router) { }
 
   public getQuestions( numberOfQuestionSetByUser: NgForm ){ 
-    this.DataService.getQuestionData(numberOfQuestionSetByUser.value);
+    //this.DataService.getCharactersforGrid(numberOfQuestionSetByUser.value);
     this.router.navigate(['/Question']);
   }
 }
