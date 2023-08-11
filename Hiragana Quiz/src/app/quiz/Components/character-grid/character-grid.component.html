@@ -3,8 +3,8 @@
     <div class="col column" *ngFor="let column of characters">
       <div class="character" *ngFor="let character of column; index as i">
         <button class="grid-button" (click)="columnSelected(column, i)">
-          <h1 style="white-space: nowrap">{{ character.hiragana }}</h1>
-          <p style="white-space: nowrap">{{ character.answer }}</p>
+          <h1 style="white-space: nowrap">{{ character.character }}</h1>
+          <p style="white-space: nowrap">{{ character.romanization }}</p>
         </button>
       </div>
     </div>

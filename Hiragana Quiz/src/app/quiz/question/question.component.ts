@@ -1,6 +1,6 @@
 import { Subscription, Subject, Observable } from 'rxjs';
 import { AfterViewInit, Component } from '@angular/core';
-import { Quizitem } from 'src/app/shared/Interfaces/quizitem';
+import { Character } from 'src/app/shared/Interfaces/character';
 import { DataService } from 'src/app/shared/Services/data.service';
 import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -14,7 +14,7 @@ import { Router } from '@angular/router';
 
 
 export class QuestionComponent {
-  public questionData:Quizitem[] =[];
+  public questionData:Character[] =[];
   public numberOfQuestions:number = 0; 
   public userAnswer = new FormControl('');
   public userScore = 0;
@@ -29,10 +29,7 @@ export class QuestionComponent {
   public userResultColor = "";
 
   constructor(public DataService:DataService,private router:Router){
-    this.DataService.QuizData$.subscribe(response=>{
-      //this.questionData = response;
 
-    })
   }
 
   }

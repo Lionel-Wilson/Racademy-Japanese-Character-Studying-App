@@ -1,6 +1,6 @@
 import { AngularFireModule } from '@angular/fire/compat';
 import { Injectable } from '@angular/core';
-import { Quizitem } from '../Interfaces/quizitem';
+import { Character } from '../Interfaces/character';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { BehaviorSubject,Observable } from 'rxjs';
@@ -11,8 +11,8 @@ import { initializeApp } from 'firebase/app'; // Import initializeApp
   providedIn: 'root'
 })
 export class DataService {
-  private quizDataSubject = new BehaviorSubject<[Quizitem[]]>([[]]);
-  public QuizData$ = this.quizDataSubject.asObservable();
+  private CharactersSubject = new BehaviorSubject<Character[]>([]);
+  public Characters =this.CharactersSubject.asObservable();;
 
   
 
@@ -21,18 +21,29 @@ export class DataService {
    }
 
 
-  public getCharactersforGrid(){
-    this.http.get<[Quizitem[]]>(environment.QuizApiUrl).subscribe((results => {
-      this.quizDataSubject.next(results);
+  public getCharactersforGrid(selection:any){
+    if(selection == 'Hiragana'){
 
-    }))
-
+      this.getHiragana();
+      
+    }
+    else if( selection == 'Katakana'){
+      this.getKatakana();
+    }
+    else if( selection =='Hiragana Dakuten'){
+      this.getHiraganaDakuten();
+    }
+    else if( selection =='Katakana Dakuten'){
+      this.getKatakanaDakuten();
+    }
+    /*
     this.getHiragana();
     this.getHiraganacontracted()
     this.getHiraganaDakuten()
     this.getKatakana()
     this.getKatakanaContracted();
     this.getKatakanaDakuten();
+    */
 }
 
 public getHiragana(){
@@ -40,7 +51,9 @@ public getHiragana(){
   const hiraganaRef = ref(database,'Hiragana/');
   onValue(hiraganaRef,(snapshot)=>{
     const data = snapshot.val();
-    console.log(data);
+    this.CharactersSubject.next(data); // Update the subject
+
+
   })
 }
 
@@ -49,7 +62,8 @@ public getHiraganaDakuten(){
   const hiraganaDakutenRef = ref(database,'Hiragana Dakuten/');
   onValue(hiraganaDakutenRef,(snapshot)=>{
     const data = snapshot.val();
-    console.log(data);
+    this.CharactersSubject.next(data); // Update the subject
+
   })
 }
 public getHiraganacontracted(){
@@ -57,7 +71,8 @@ public getHiraganacontracted(){
   const HiraganacontractedRef = ref(database,'Hiragana contracted/');
   onValue(HiraganacontractedRef,(snapshot)=>{
     const data = snapshot.val();
-    console.log(data);
+    this.CharactersSubject.next(data); // Update the subject
+
   })
 }
 
@@ -66,7 +81,8 @@ public getKatakana(){
   const katakanaRef = ref(database,'Katakana/');
   onValue(katakanaRef,(snapshot)=>{
     const data = snapshot.val();
-    console.log(data);
+    this.CharactersSubject.next(data); // Update the subject
+
   })
 }
 public getKatakanaContracted(){
@@ -74,7 +90,8 @@ public getKatakanaContracted(){
   const KatakanaContractedref = ref(database,'Katakana Contracted/');
   onValue(KatakanaContractedref,(snapshot)=>{
     const data = snapshot.val();
-    console.log(data);
+    this.CharactersSubject.next(data); // Update the subject
+
   })
 }
 public getKatakanaDakuten(){
@@ -82,7 +99,8 @@ public getKatakanaDakuten(){
   const KatakanaDakutenref = ref(database,'Katakana Dakuten/');
   onValue(KatakanaDakutenref,(snapshot)=>{
     const data = snapshot.val();
-    console.log(data);
+    this.CharactersSubject.next(data); // Update the subject
+
   })
 }
 

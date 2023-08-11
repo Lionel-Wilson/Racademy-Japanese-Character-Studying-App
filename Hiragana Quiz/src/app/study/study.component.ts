@@ -14,8 +14,8 @@ constructor(private router:Router,private DataService:DataService){
 
 }
 
-public startStudy(){
-  this.DataService.getCharactersforGrid();
+public startStudy(selection:string){
+  this.DataService.getCharactersforGrid(selection);
   this.router.navigate(['/Question']);
 }
 }
