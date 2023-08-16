@@ -9,6 +9,13 @@
 
     background-image: linear-gradient(to bottom right, #90d1ed, #55bdea);
   }
+  .character-selected {
+
+    padding: 10px 10px;
+    width: 100px;
+
+    background-image: linear-gradient(to bottom right, #ff7774, #fe5653);
+  }
   p,h1{
     margin: 0px;
   }
@@ -45,5 +52,9 @@
 .study-button:hover{
     background-color: #90d1ed !important;
     border-color: #90d1ed !important;
+}
+
+.testColumn{
+  background-color: #fe5653;
 }
   
