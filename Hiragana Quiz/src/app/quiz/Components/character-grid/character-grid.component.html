@@ -4,9 +4,7 @@
       <div
         class="character"
         *ngFor="let character of column; index as i"
-        [class.character-selected]="
-          columnSelectedColour == true && selectedColumn.includes(column[i])
-        "
+        [class.character-selected]="selectedColumnindexes.includes(j)"
       >
         <button class="grid-button" (click)="columnSelected(column, j)">
           <h1 style="white-space: nowrap">{{ character.character }}</h1>
