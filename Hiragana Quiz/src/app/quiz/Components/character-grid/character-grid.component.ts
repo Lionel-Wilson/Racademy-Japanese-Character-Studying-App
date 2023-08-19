@@ -57,30 +57,32 @@ export class CharacterGridComponent {
 
 
  public columnSelected(column: Character[],index:number){
-  //when click a column:
-  //Add index value to selectedColumnindexes.
-  //if column index exists inside selectedColumnindexes then highlight
   console.log(column);
   console.log(index);
+  console.log(this.charactersToBeTestedOn)
+
 
 
   if(this.selectedColumnindexes.includes(index)){
-    console.log("im already in the selectedcolumn indexes")
+
  
     const newSelectedColumnIndexes = this.selectedColumnindexes.filter(item => item !== index);
     this.selectedColumnindexes = newSelectedColumnIndexes;
 
+    const newCharactersToBeTestedOn = this.charactersToBeTestedOn.filter(char => !column.includes(char));
+    this.charactersToBeTestedOn = newCharactersToBeTestedOn;
+
   }
   else{
-    console.log("hey im new here")
 
     this.selectedColumnindexes.push(index);
-
     column.forEach(element => {
       this.charactersToBeTestedOn.push(element);
     });
   }
+  console.log("after changes:")
   console.log(this.selectedColumnindexes)
+  console.log(this.charactersToBeTestedOn)
   
 
  
