@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Character } from 'src/app/shared/Interfaces/character';
 import { Component } from '@angular/core';
 import { DataService } from 'src/app/shared/Services/data.service';
@@ -23,7 +24,7 @@ export class CharacterGridComponent {
   public selectedColumnindexes : number[]=[];
 
  
-  constructor(private DataService:DataService){
+  constructor(private DataService:DataService,private router: Router){
     this.DataService.Characters.subscribe(response=>{
       this.formatCharactersForGrid(response);
     })
@@ -64,14 +65,11 @@ export class CharacterGridComponent {
 
 
   if(this.selectedColumnindexes.includes(index)){
-
- 
     const newSelectedColumnIndexes = this.selectedColumnindexes.filter(item => item !== index);
     this.selectedColumnindexes = newSelectedColumnIndexes;
 
     const newCharactersToBeTestedOn = this.charactersToBeTestedOn.filter(char => !column.includes(char));
     this.charactersToBeTestedOn = newCharactersToBeTestedOn;
-
   }
   else{
 
@@ -87,6 +85,17 @@ export class CharacterGridComponent {
 
  
 
+}
+
+public startQuiz(){
+  if(this.charactersToBeTestedOn.length > 0){
+    this.DataService.questionCharacters = this.charactersToBeTestedOn;
+    this.router.navigate(['/Quiz']);
+  }
+  else{
+    console.log("SELECT A CHARACTER");
+  }
+  
 }
 
 

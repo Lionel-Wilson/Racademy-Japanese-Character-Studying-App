@@ -2,8 +2,7 @@
   <div class="quiz-container card">
     <h1>Hiragana Quiz</h1>
 
-    <!-- Generated after user choosers how many questions they want-->
-    <div class="Quiz" *ngIf="start == true; else StartBlock">
+    <div class="Quiz">
       <p>Type the romaji for the Hiragana you know</p>
       <br />
       <div *ngIf="userResult">
@@ -16,7 +15,7 @@
       <br />
 
       <form (submit)="checkAnswers()">
-        <h1>{{ data[index].hiragana }}</h1>
+        <h1>{{ data[index].character }}</h1>
         <br />
         <div style="display: flex; justify-content: center">
           <input
@@ -53,23 +52,6 @@
       </form>
       <br />
     </div>
-
-    <ng-template #StartBlock>
-      <p style="max-width: 35rem">How many questions do you want? Max is 90</p>
-      <br />
-      <form #startForm="ngForm" (ngSubmit)="getQuestions(startForm)">
-        <input
-          title="numberOfQuestionSetByUser"
-          type="number"
-          name="numberOfQuestionSetByUser"
-          ngModel
-          required
-        />
-        <br />
-        <button type="submit" class="btn btn-primary btn-lg">Start</button>
-      </form>
-      <br />
-    </ng-template>
 
     <div>
       <p>

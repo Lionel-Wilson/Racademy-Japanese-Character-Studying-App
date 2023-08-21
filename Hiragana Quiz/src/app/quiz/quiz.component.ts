@@ -1,9 +1,12 @@
+import { DataService } from 'src/app/shared/Services/data.service';
 import { Component, NgModule} from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { FormControl, NgForm } from '@angular/forms';
 import { catchError, retry } from 'rxjs/operators';
 import { BrowserModule } from '@angular/platform-browser';
+import { Character } from '../shared/Interfaces/character';
+
 
 
 
@@ -14,7 +17,7 @@ import { BrowserModule } from '@angular/platform-browser';
 })
 export class QuizComponent {
 
-  public data:QuizItem[]=[];
+  public data:Character[]=[];
   public numberOfQuestions:number = 0; 
   public configUrl = 'https://localhost:7013/Quiz';
   public userAnswer = new FormControl('');
@@ -23,27 +26,24 @@ export class QuizComponent {
   public canClickNext = false;
   public quizButtonText :string = "Check Answer";
 
-  public start = false;
+
 
   public userResult :string|null = null;
   public userResultColor = "";
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,private DataService:DataService) { 
+    this.getData();
+  }
 
- public getData(numberOfQuestionSetByUser:any){
-  this.http.get<QuizItem[]>(this.configUrl,{params:numberOfQuestionSetByUser}).subscribe((results => {
-    this.data = results;
-    this.numberOfQuestions = this.data.length;
-    this.start = true;
-  }))
+ public getData(){
+  this.data = this.DataService.questionCharacters;
+  this.numberOfQuestions = this.data.length;
 }
 
-public getQuestions( numberOfQuestionSetByUser: NgForm ){
-  this.getData(numberOfQuestionSetByUser.value);
-}
+
 
 public checkAnswers(){
-    if(this.data[this.index].answer == this.userAnswer.value && this.canClickNext ==false){
+    if(this.data[this.index].romanization == this.userAnswer.value && this.canClickNext ==false){
       this.userResult = "Correct!";
       this.userResultColor = "green";
       this.userScore+=1;
@@ -51,7 +51,7 @@ public checkAnswers(){
       this.quizButtonText = "Next";
       this.userAnswer.reset();
     }
-    else if(this.data[this.index].answer != this.userAnswer.value){
+    else if(this.data[this.index].romanization != this.userAnswer.value){
       this.userResultColor = "red";
       this.userResult = "Try Again";
     }
@@ -72,7 +72,7 @@ public checkAnswers(){
       this.canClickNext = false;
       this.quizButtonText = "Check Answer";
       this.userAnswer = new FormControl('');
-      this.start=false;
+   
     }
     else{
       this.userResult = "EXAM COMPLETE!";

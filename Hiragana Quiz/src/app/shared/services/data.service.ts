@@ -14,6 +14,8 @@ export class DataService {
   private CharactersSubject = new BehaviorSubject<Character[]>([]);
   public Characters =this.CharactersSubject.asObservable();;
 
+  public questionCharacters:Character[] =[];
+
   
 
   constructor(private http: HttpClient) {
