@@ -1,28 +1,67 @@
 # Racademy-Japanese-Character-Studying-App
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.0.
-A quick full stack hiragana quiz app I made for fun. Tech stack - Angular, .Net, Microsoft SQL Server
+> Created a quiz app to learn Japanese characters for a Japanese language learning Academy using Angular & Firebase. 
 
-## Development server
+## Table of Contents
+* [General Info](#general-information)
+* [Technologies Used](#technologies-used)
+* [Features](#features)
+* [Screenshots](#screenshots)
+* [Project Status](#project-status)
+* [Room for Improvement](#room-for-improvement)
+* [Acknowledgements](#acknowledgements)
+* [Contact](#contact)
+<!-- * [License](#license) -->
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-## Code scaffolding
+## General Information
+- This is a web application that allows the students of Ricchaado Academy to study the characters they have learnt from their lessons on the Riccaado Academy website.
+- Contributed to designing, building, testing and maintaining the app with over 200 active users.
+- Gathered requirements from the CEO and implemented them.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Technologies Used
+- Angular
+- Typescript
+- Firebase
 
-## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Features
+- Select what specifically what Japanese character group you want to study.e.g. Hiragana, Katakana etc.
+- Select the specific columns of characters that you're weak on that you want to study
+- Quiz yourself on those characters.
 
-## Running end-to-end tests
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Screenshots
+![image](https://github.com/Lionel-Wilson/Racademy-Japanese-Character-Studying-App/assets/80872669/83ef8357-b8b1-4f09-b977-bab7615e0a65)
 
-## Further help
+![image](https://github.com/Lionel-Wilson/Racademy-Japanese-Character-Studying-App/assets/80872669/3afefdb7-8e8a-4df6-aa94-736c4fc1513f)
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+![image](https://github.com/Lionel-Wilson/Racademy-Japanese-Character-Studying-App/assets/80872669/aa0608f7-114f-426c-b84a-d0a6f5ca5d44)
+
+
+
+
+
+## Project Status
+Project is: _in progress_ 
+
+
+## Room for Improvement
+-  Add sound effects
+-  Add a leaderboard
+-  Add profiles
+
+
+## Acknowledgements
+- I would like to thank first and foremost Jesus Christ my Lord and saviour for
+getting me this far and keeping me at peace.
+- I would next like to thank my friend Gee for keeping me motivated to work on this project daily by spending time with me in evening discord calls
+- I would like to give a massive thanks to my church and Sunday funday group for
+making sure I touched grass every now and then and didn't stay inside all the
+time.
+
+
+## Contact
+Created by [Lionel Wilson](https://github.com/Lionel-Wilson) - feel free to contact me!
