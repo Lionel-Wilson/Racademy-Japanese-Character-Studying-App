@@ -1,65 +1,67 @@
-<div class="main-containter">
-  <div class="quiz-container card">
-    <h1>Hiragana Quiz</h1>
+<div class="outer-containter">
+  <div class="main-containter">
+    <div class="quiz-container card">
+      <h1>Hiragana Quiz</h1>
 
-    <div class="Quiz">
-      <p>Type the romaji for the character below</p>
-      <br />
-      <div *ngIf="userResult">
-        <div style="color: {{ userResultColor }};">
-          <p>{{ userResult }}</p>
+      <div class="Quiz">
+        <p>Type the romaji for the character below</p>
+        <br />
+        <div *ngIf="userResult">
+          <div style="color: {{ userResultColor }};">
+            <p>{{ userResult }}</p>
+          </div>
         </div>
+        <br />
+        <p>User Score - {{ userScore }}/{{ numberOfQuestions }}</p>
+        <br />
+
+        <form (submit)="checkAnswers()">
+          <h1>{{ data[index].character }}</h1>
+          <br />
+          <div style="display: flex; justify-content: center">
+            <input
+              label="userAnswer"
+              placeholder="Type here..."
+              type="text"
+              id="answer"
+              name="answer"
+              [formControl]="userAnswer"
+              style="max-width: 10rem; text-align: center"
+            />
+          </div>
+          <br />
+          <div *ngIf="canClickNext == false; else elseBlock">
+            <div style="text-align: center">
+              <input
+                type="submit"
+                class="btn btn-primary btn-lg study-button"
+                [value]="quizButtonText"
+              />
+            </div>
+          </div>
+          <ng-template #elseBlock>
+            <div style="text-align: center">
+              <input
+                title="quizButtonText"
+                type="button"
+                class="btn btn-primary btn-lg study-button"
+                (click)="nextQuestion()"
+                [value]="quizButtonText"
+              />
+            </div>
+          </ng-template>
+        </form>
+        <br />
       </div>
-      <br />
-      <p>User Score - {{ userScore }}/{{ numberOfQuestions }}</p>
-      <br />
 
-      <form (submit)="checkAnswers()">
-        <h1>{{ data[index].character }}</h1>
-        <br />
-        <div style="display: flex; justify-content: center">
-          <input
-            label="userAnswer"
-            placeholder="userAnswer"
-            type="text"
-            id="answer"
-            name="answer"
-            [formControl]="userAnswer"
-            style="max-width: 10rem; text-align: center"
-          />
-        </div>
-        <br />
-        <div *ngIf="canClickNext == false; else elseBlock">
-          <div style="text-align: center">
-            <input
-              type="submit"
-              class="btn btn-primary btn-lg"
-              [value]="quizButtonText"
-            />
-          </div>
-        </div>
-        <ng-template #elseBlock>
-          <div style="text-align: center">
-            <input
-              title="quizButtonText"
-              type="button"
-              class="btn btn-primary btn-lg"
-              (click)="nextQuestion()"
-              [value]="quizButtonText"
-            />
-          </div>
-        </ng-template>
-      </form>
-      <br />
-    </div>
-
-    <div>
-      <p>
-        By
-        <a target="”_blank”" href="https://www.instagram.com/lionel_wilson/"
-          >Lionel</a
-        >
-      </p>
+      <div>
+        <p>
+          By
+          <a target="”_blank”" href="https://www.instagram.com/lionel_wilson/"
+            >Lionel</a
+          >
+        </p>
+      </div>
     </div>
   </div>
 </div>

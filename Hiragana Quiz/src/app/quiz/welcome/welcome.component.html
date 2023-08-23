@@ -1,28 +1,30 @@
-<div class="main-containter">
-  <div class="quiz-container card">
-    <h1>Hiragana Quiz</h1>
-    <p style="max-width: 35rem">How many questions do you want? Max is 90</p>
-    <br />
-    <form #startForm="ngForm" (ngSubmit)="getQuestions(startForm)">
-      <input
-        title="numberOfQuestionSetByUser"
-        type="number"
-        name="numberOfQuestionSetByUser"
-        ngModel
-        required
-      />
+<div class="outer-containter">
+  <div class="main-containter">
+    <div class="quiz-container card">
+      <h1>Hiragana Quiz</h1>
+      <p style="max-width: 35rem">How many questions do you want? Max is 90</p>
       <br />
+      <form #startForm="ngForm" (ngSubmit)="getQuestions(startForm)">
+        <input
+          title="numberOfQuestionSetByUser"
+          type="number"
+          name="numberOfQuestionSetByUser"
+          ngModel
+          required
+        />
+        <br />
 
-      <button type="submit" class="btn btn-primary btn-lg">Start</button>
-    </form>
-    <br />
+        <button type="submit" class="btn btn-primary btn-lg">Start</button>
+      </form>
+      <br />
+    </div>
   </div>
-</div>
-<div>
-  <p>
-    By
-    <a target="”_blank”" href="https://www.instagram.com/lionel_wilson/"
-      >Lionel</a
-    >
-  </p>
+  <div>
+    <p>
+      By
+      <a target="”_blank”" href="https://www.instagram.com/lionel_wilson/"
+        >Lionel</a
+      >
+    </p>
+  </div>
 </div>

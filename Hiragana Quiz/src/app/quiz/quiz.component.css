@@ -22,7 +22,11 @@ p{
     display: flex;
     justify-content: center;
     padding-top: 2em;
+    margin-bottom:5em;
+    
 }
+
+
 .quiz-container{
     display: flex;
     justify-content: center;
@@ -41,8 +45,18 @@ form{
 Ref - https://stackoverflow.com/questions/28261287/how-to-change-btn-color-in-bootstrap
 */
 .btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
-    background-color: #8064A2 !important;
-    border-color: #8064A2;
+    background-color: #fe5653 !important;
+    border-color: #fe5653;
+    white-space: nowrap;
+}
+
+.study-button{
+    width:191.21px;
+    margin: 5px;
+    color: black;
+    border-radius: 30px;
+    padding: 25px,50px;
+
 }
 
 .question{
