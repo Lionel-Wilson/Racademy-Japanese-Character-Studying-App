@@ -6,6 +6,7 @@ import { FormControl, NgForm } from '@angular/forms';
 import { catchError, retry } from 'rxjs/operators';
 import { BrowserModule } from '@angular/platform-browser';
 import { Character } from '../shared/Interfaces/character';
+import { Router } from '@angular/router';
 
 
 
@@ -26,12 +27,14 @@ export class QuizComponent {
   public canClickNext = false;
   public quizButtonText :string = "Check Answer";
 
+  public showAnswerInputBox = true;
+
 
 
   public userResult :string|null = null;
   public userResultColor = "";
 
-  constructor(private http: HttpClient,private DataService:DataService) { 
+  constructor(private http: HttpClient,private DataService:DataService, private router:Router) { 
     this.getData();
   }
 
@@ -48,6 +51,7 @@ public checkAnswers(){
       this.userResultColor = "green";
       this.userScore+=1;
       this.canClickNext = true;
+      this.showAnswerInputBox = false;
       this.quizButtonText = "Next";
       this.userAnswer.reset();
     }
@@ -63,6 +67,7 @@ public checkAnswers(){
       this.userResult = null;
       this.index += 1;
       this.canClickNext = false;
+      this.showAnswerInputBox = true;
     }
     else if(this.quizButtonText==="Start Again"){
       //restart game
@@ -70,8 +75,10 @@ public checkAnswers(){
       this.userResultColor = "";
       this.userScore = 0;
       this.canClickNext = false;
+      this.showAnswerInputBox = true;
       this.quizButtonText = "Check Answer";
       this.userAnswer = new FormControl('');
+      this.router.navigate(['/Study']);
    
     }
     else{
