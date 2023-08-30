@@ -1,7 +1,7 @@
 <div class="outer-containter">
   <div class="main-containter">
     <div class="quiz-container card">
-      <h1>Hiragana Quiz</h1>
+      <h1>Quiz</h1>
 
       <div class="Quiz">
         <p>Type the romaji for the character below</p>
@@ -18,6 +18,10 @@
         <form (submit)="checkAnswers()">
           <h1>{{ data[index].character }}</h1>
           <br />
+          <div *ngIf="answerIsWrong">
+            <h2>{{ data[index].romanization }}</h2>
+            <br />
+          </div>
           <div
             style="display: flex; justify-content: center"
             *ngIf="showAnswerInputBox"

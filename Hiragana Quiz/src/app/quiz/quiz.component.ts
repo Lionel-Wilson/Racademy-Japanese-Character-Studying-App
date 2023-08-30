@@ -29,6 +29,8 @@ export class QuizComponent {
 
   public showAnswerInputBox = true;
 
+  public answerIsWrong = false;
+
 
 
   public userResult :string|null = null;
@@ -47,6 +49,7 @@ export class QuizComponent {
 
 public checkAnswers(){
     if(this.data[this.index].romanization == this.userAnswer.value && this.canClickNext ==false){
+      this.answerIsWrong = false;
       this.userResult = "Correct!";
       this.userResultColor = "green";
       this.userScore+=1;
@@ -56,8 +59,13 @@ public checkAnswers(){
       this.userAnswer.reset();
     }
     else if(this.data[this.index].romanization != this.userAnswer.value){
+      this.answerIsWrong = true;
+      this.canClickNext = true;
+      this.showAnswerInputBox = false;
+      this.quizButtonText = "Next";
+      this.userAnswer.reset();
       this.userResultColor = "red";
-      this.userResult = "Try Again";
+      this.userResult = "残念！ Better luck next time!";
     }
 
   }
@@ -68,6 +76,8 @@ public checkAnswers(){
       this.index += 1;
       this.canClickNext = false;
       this.showAnswerInputBox = true;
+      this.answerIsWrong = false;
+      this.quizButtonText = "Check Answer";
     }
     else if(this.quizButtonText==="Start Again"){
       //restart game
@@ -79,6 +89,8 @@ public checkAnswers(){
       this.quizButtonText = "Check Answer";
       this.userAnswer = new FormControl('');
       this.router.navigate(['/Study']);
+      this.answerIsWrong = false;
+
    
     }
     else{
