@@ -50,7 +50,7 @@ export class QuizComponent {
 public checkAnswers(){
     if(this.data[this.index].romanization == this.userAnswer.value && this.canClickNext ==false){
       this.answerIsWrong = false;
-      this.userResult = "Correct!";
+      this.userResult = "正解！ Keep going!";
       this.userResultColor = "green";
       this.userScore+=1;
       this.canClickNext = true;
