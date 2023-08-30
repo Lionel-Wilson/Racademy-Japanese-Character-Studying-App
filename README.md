@@ -40,6 +40,9 @@
 
 ![image](https://github.com/Lionel-Wilson/Racademy-Japanese-Character-Studying-App/assets/80872669/aa0608f7-114f-426c-b84a-d0a6f5ca5d44)
 
+![image](https://github.com/Lionel-Wilson/Racademy-Japanese-Character-Studying-App/assets/80872669/7b4fcc89-2577-43b5-a0ef-7e66be2ffac7)
+
+![image](https://github.com/Lionel-Wilson/Racademy-Japanese-Character-Studying-App/assets/80872669/6b2700ca-da39-4efa-9a4f-4738f44313cd)
 
 
 
