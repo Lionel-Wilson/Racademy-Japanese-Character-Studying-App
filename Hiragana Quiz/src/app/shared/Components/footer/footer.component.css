@@ -13,3 +13,10 @@ a{
     color: #fe5653 !important;
     text-decoration: none;
 }
+
+@media screen and (max-width: 450px) {
+p{
+    font-size: 0.8em;
+}
+
+}

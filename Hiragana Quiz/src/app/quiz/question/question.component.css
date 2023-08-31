@@ -41,3 +41,11 @@ Ref - https://stackoverflow.com/questions/28261287/how-to-change-btn-color-in-bo
 .question{
     font-size:150px;
 }
+
+
+@media screen and (max-width: 450px) {
+
+    h2{
+        font-size: 1.2em;
+    }
+}

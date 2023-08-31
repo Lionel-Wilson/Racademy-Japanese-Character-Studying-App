@@ -5,14 +5,14 @@
   .character {
 
     padding: 10px 10px;
-    width: 100px;
+    width: 6.25em;
 
     background-image: linear-gradient(to bottom right, #90d1ed, #55bdea);
   }
   .character-selected {
 
     padding: 10px 10px;
-    width: 100px;
+    width: 6.25em;
 
     background-image: linear-gradient(to bottom right, #ff7774, #fe5653);
   }
@@ -54,7 +54,58 @@
     border-color: #90d1ed !important;
 }
 
-.testColumn{
-  background-color: #fe5653;
+
+
+@media screen and (max-width: 850px) {
+  .character {
+
+    width: 4em;
+    height: 4em;
+
+  }
+  .character-selected {
+    width: 4em;
+    height: 4em;
+  }
+
+  h1{
+    font-size: 1.5em;
+  }
+  p{
+    font-size: 0.7em;
+  }
+
+
+}
+@media screen and (max-width: 450px) {
+  .character {
+
+    width: 2em;
+    height: 2em;
+    padding: 0;
+
+
+
+  }
+  .character-selected {
+    width: 2em;
+    height: 2em;
+    padding: 0;
+
+
+  }
+
+  h1{
+    font-size: 0.5em;
+  }
+  p{
+    font-size: 0.2em;
+  }
+  p,h1{
+    margin: 0;
+    padding: 0;
+  }
+
+
 }
   

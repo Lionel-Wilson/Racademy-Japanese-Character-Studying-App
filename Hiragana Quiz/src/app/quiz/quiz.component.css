@@ -67,6 +67,11 @@ Ref - https://stackoverflow.com/questions/28261287/how-to-change-btn-color-in-bo
 }
 
 
+@media screen and (max-width: 450px) {
+    .quiz-container{
+        width: 23rem;
+    }
 
+}
 
 
