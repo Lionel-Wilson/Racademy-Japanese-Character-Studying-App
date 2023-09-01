@@ -48,7 +48,7 @@ export class QuizComponent {
 
 
 public checkAnswers(){
-    if(this.data[this.index].romanization == this.userAnswer.value && this.canClickNext ==false){
+    if(this.data[this.index].romanization == this.userAnswer.value?.toLowerCase() && this.canClickNext ==false){
       this.answerIsWrong = false;
       this.userResult = "正解！ Keep going!";
       this.userResultColor = "green";
@@ -58,7 +58,7 @@ public checkAnswers(){
       this.quizButtonText = "Next";
       this.userAnswer.reset();
     }
-    else if(this.data[this.index].romanization != this.userAnswer.value){
+    else if(this.data[this.index].romanization != this.userAnswer.value?.toLowerCase()){
       this.answerIsWrong = true;
       this.canClickNext = true;
       this.showAnswerInputBox = false;
