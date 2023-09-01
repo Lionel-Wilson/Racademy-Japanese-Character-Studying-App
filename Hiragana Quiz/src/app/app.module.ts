@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { QuizComponent } from './quiz/quiz.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
-import { WelcomeComponent } from './quiz/welcome/welcome.component';
 import { QuestionComponent } from './quiz/question/question.component';
 import { NavbarComponent } from './shared/Components/navbar/navbar.component';
 import { StudyComponent } from './study/study.component';
@@ -30,7 +29,6 @@ import { provideStorage,getStorage } from '@angular/fire/storage';
   declarations: [
     AppComponent,
     QuizComponent,
-    WelcomeComponent,
     QuestionComponent,
     NavbarComponent,
     StudyComponent,
