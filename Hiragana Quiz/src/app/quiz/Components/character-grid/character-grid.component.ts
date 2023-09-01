@@ -58,9 +58,7 @@ export class CharacterGridComponent {
 
 
  public columnSelected(column: Character[],index:number){
-  console.log(column);
-  console.log(index);
-  console.log(this.charactersToBeTestedOn)
+
 
 
 
@@ -78,9 +76,7 @@ export class CharacterGridComponent {
       this.charactersToBeTestedOn.push(element);
     });
   }
-  console.log("after changes:")
-  console.log(this.selectedColumnindexes)
-  console.log(this.charactersToBeTestedOn)
+
   
 
  
