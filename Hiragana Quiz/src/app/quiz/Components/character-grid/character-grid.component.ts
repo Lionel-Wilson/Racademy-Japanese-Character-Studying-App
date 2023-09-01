@@ -16,6 +16,9 @@ export class CharacterGridComponent {
   public charactersToBeTestedOn: Character[]=[];
   public endCharacters: string[] = ["o","ko","so","to","no","ho","mo","yo","ro","wo","-n","go","zo","do","bo","po","vu","kyo","syo","tyo","nyo","hyo","myo","ryo","gyo","zyo","dyo","zyo","byo","byo"];
 
+
+  public showAlert = false;
+
   
 
 
@@ -58,10 +61,6 @@ export class CharacterGridComponent {
 
 
  public columnSelected(column: Character[],index:number){
-
-
-
-
   if(this.selectedColumnindexes.includes(index)){
     const newSelectedColumnIndexes = this.selectedColumnindexes.filter(item => item !== index);
     this.selectedColumnindexes = newSelectedColumnIndexes;
@@ -77,10 +76,6 @@ export class CharacterGridComponent {
     });
   }
 
-  
-
- 
-
 }
 
 public startQuiz(){
@@ -89,10 +84,17 @@ public startQuiz(){
     this.router.navigate(['/Quiz']);
   }
   else{
-    console.log("SELECT A CHARACTER");
+    this.showAlert = true;
   }
   
 }
+public closeSelectColumnAlert(){
+  console.log(this.showAlert);
+  if(this.showAlert){
+    this.showAlert = false;
+  }
+}
+
 
 
 }
