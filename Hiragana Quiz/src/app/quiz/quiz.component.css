@@ -66,6 +66,24 @@ Ref - https://stackoverflow.com/questions/28261287/how-to-change-btn-color-in-bo
     font-size:150px;
 }
 
+.b-example-divider {
+    width: 100%;
+    height: 3rem;
+    background-color: rgba(0, 0, 0, .1);
+    border: solid rgba(0, 0, 0, .15);
+    border-width: 1px 0;
+    box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+  }
+
+.modal-sheet{
+    background-color: #fffec3 !important;
+}
+
+
+.form-signin .form-floating:focus-within {
+    z-index: 2;
+  }
+
 
 @media screen and (max-width: 450px) {
     .quiz-container{
