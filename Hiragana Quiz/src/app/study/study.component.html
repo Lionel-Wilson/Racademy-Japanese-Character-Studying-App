@@ -20,6 +20,71 @@
   <div class="b-example-divider"></div>
 
   <div class="main-containter">
+    <div class="container col-xl-10 col-xxl-8 px-4 py-5">
+      <div class="row align-items-center g-lg-5 py-5">
+        <div class="col-lg-7 text-center text-lg-start">
+          <h1 class="display-4 fw-bold lh-1 text-body-emphasis mb-3">
+            Welcome to the Study Area
+          </h1>
+          <p class="col-lg-10 fs-4">
+            Here you can revise the weak areas that you may have when it comes
+            to the Japanese character system. Select the area you want to study
+            on the right:
+          </p>
+        </div>
+        <div class="col-md-10 mx-auto col-lg-5">
+          <div
+            class="p-4 p-md-5 border rounded-3 bg-body-tertiary button-container"
+          >
+            <button
+              (click)="startStudy('Hiragana')"
+              type="submit"
+              class="btn btn-primary btn-lg study-button"
+            >
+              Hiragana
+            </button>
+            <button
+              (click)="startStudy('Hiragana Dakuten')"
+              type="submit"
+              class="btn btn-primary btn-lg study-button"
+            >
+              Hiragana Dakuten
+            </button>
+
+            <button
+              (click)="startStudy('Contracted Sounds')"
+              type="submit"
+              class="btn btn-primary btn-lg study-button"
+            >
+              Contracted Sounds
+            </button>
+            <button
+              (click)="startStudy('Double Consonants')"
+              type="submit"
+              class="btn btn-primary btn-lg study-button"
+            >
+              Double Consonants
+            </button>
+
+            <button
+              (click)="startStudy('Katakana')"
+              type="submit"
+              class="btn btn-primary btn-lg study-button"
+            >
+              Katakana
+            </button>
+            <button
+              (click)="startStudy('Katakana Dakuten')"
+              type="submit"
+              class="btn btn-primary btn-lg study-button"
+            >
+              Katakana Dakuten
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- OLD HOME PAGE
     <div class="study-page-description-div">
       <h2 style="text-align: center; font-weight: bold">
         Welcome to the Study Area
@@ -81,7 +146,8 @@
         </button>
       </div>
     </div>
-    <br />
+    -->
+
     <div>
       <img src="../../assets/Images/image8.png" alt="" width="200px" />
     </div>
