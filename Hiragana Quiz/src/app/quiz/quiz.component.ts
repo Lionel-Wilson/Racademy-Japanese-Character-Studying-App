@@ -47,11 +47,31 @@ export class QuizComponent {
   this.numberOfQuestions = this.data.length;
 }
 
+public playSound(isMute:boolean,answerIsWrong:boolean ){
+  if(isMute){
+    return;
+  }
+  else{
+    let audio = new Audio();
+    if(answerIsWrong){
+      audio.src = "../../assets/audio/Wrong Answer Sound Effect.mp3";
+    }
+    else{
+      audio.src = "../../assets/audio/CORRECT ANSWER SOUND EFFECT.mp3";
+    }
+
+    audio.load();
+    audio.play();
+  }
+
+}
 
 
 public checkAnswers(){
+  //correct answer
     if(this.data[this.index].romanization == this.userAnswer.value?.toLowerCase() && this.canClickNext ==false){
       this.answerIsWrong = false;
+      this.playSound(false,this.answerIsWrong);
       this.userResult = "正解！ Keep going!";
       this.userResultColor = "green";
       this.userScore+=1;
@@ -60,8 +80,10 @@ public checkAnswers(){
       this.quizButtonText = "Next";
       this.userAnswer.reset();
     }
+  //wrong answer
     else if(this.data[this.index].romanization != this.userAnswer.value?.toLowerCase()){
       this.answerIsWrong = true;
+      this.playSound(false,this.answerIsWrong);
       this.canClickNext = true;
       this.showAnswerInputBox = false;
       this.quizButtonText = "Next";
