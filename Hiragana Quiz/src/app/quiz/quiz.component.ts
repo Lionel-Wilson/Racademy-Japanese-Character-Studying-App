@@ -31,6 +31,8 @@ export class QuizComponent {
 
   public answerIsWrong = false;
 
+  public quizComplete = false;
+
 
 
   public userResult :string|null = null;
@@ -94,6 +96,7 @@ public checkAnswers(){
    
     }
     else{
+      this.quizComplete = true;
       this.userResult = "EXAM COMPLETE!";
       this.quizButtonText = "Start Again";
       this.userResultColor = "gold";
