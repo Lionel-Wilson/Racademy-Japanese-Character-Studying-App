@@ -19,3 +19,21 @@ li :hover{
 .container-fluid{
     max-width: 1260px;
 }
+
+.Logo{
+    width: 127px;
+}
+
+@media screen and (max-width: 920px) {
+
+    .Logo{
+        width: 85px;
+    }
+  }
+  @media screen and (max-width: 450px) {
+ 
+  
+    .Logo{
+        width: 45px;
+    }
+  }
