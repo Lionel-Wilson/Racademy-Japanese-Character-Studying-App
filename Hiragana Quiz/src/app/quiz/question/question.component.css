@@ -30,6 +30,15 @@ form{
 }
 
 
+.title-div{
+margin: 1em;
+}
+.h2{
+    margin:0;
+
+}
+
+
 /*
 Ref - https://stackoverflow.com/questions/28261287/how-to-change-btn-color-in-bootstrap
 */

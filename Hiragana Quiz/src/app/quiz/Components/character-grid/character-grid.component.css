@@ -54,6 +54,13 @@
     border-color: #90d1ed !important;
 }
 
+.buttons-div{
+  align-items: center; 
+  display: flex; 
+  justify-content: center;
+  margin  :1em;
+}
+
 
 
 @media screen and (max-width: 850px) {
