@@ -73,6 +73,8 @@ public getHiragana(){
     const data = snapshot.val();
     this.CharactersSubject.next(data); // Update the subject
     console.log(data);
+    this.LoadingSubject.next(false);
+
 
 
   })
@@ -84,6 +86,7 @@ public getHiraganaDakuten(){
   onValue(hiraganaDakutenRef,(snapshot)=>{
     const data = snapshot.val();
     this.CharactersSubject.next(data); // Update the subject
+    this.LoadingSubject.next(false);
 
   })
 }
@@ -93,6 +96,7 @@ public getHiraganacontracted(){
   onValue(HiraganacontractedRef,(snapshot)=>{
     const data = snapshot.val();
     this.CharactersSubject.next(data); // Update the subject
+    this.LoadingSubject.next(false);
 
   })
 }
@@ -103,6 +107,7 @@ public getKatakana(){
   onValue(katakanaRef,(snapshot)=>{
     const data = snapshot.val();
     this.CharactersSubject.next(data); // Update the subject
+    this.LoadingSubject.next(false);
 
   })
 }
@@ -112,6 +117,7 @@ public getKatakanaContracted(){
   onValue(KatakanaContractedref,(snapshot)=>{
     const data = snapshot.val();
     this.CharactersSubject.next(data); // Update the subject
+    this.LoadingSubject.next(false);
 
   })
 }
@@ -121,6 +127,7 @@ public getKatakanaDakuten(){
   onValue(KatakanaDakutenref,(snapshot)=>{
     const data = snapshot.val();
     this.CharactersSubject.next(data); // Update the subject
+    this.LoadingSubject.next(false);
 
   })
 }
