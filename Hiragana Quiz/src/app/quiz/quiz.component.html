@@ -1,51 +1,65 @@
 <div class="outer-containter">
   <div class="b-example-divider"></div>
+  <div *ngIf="isLoading; else content">
+    <!-- Loading Screen -->
+    <div class="spinner-border" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+  <ng-template #content>
+    <!-- Content to display when data is loaded -->
+    <div
+      class="modal modal-sheet position-static d-block bg-body-secondary p-4 py-md-5"
+      tabindex="-1"
+      role="dialog"
+      id="modalTour"
+      *ngIf="!isLoading"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content rounded-4 shadow">
+          <div class="modal-body p-5">
+            <h2 class="fw-bold mb-0">Quiz</h2>
 
-  <div
-    class="modal modal-sheet position-static d-block bg-body-secondary p-4 py-md-5"
-    tabindex="-1"
-    role="dialog"
-    id="modalTour"
-  >
-    <div class="modal-dialog" role="document">
-      <div class="modal-content rounded-4 shadow">
-        <div class="modal-body p-5">
-          <h2 class="fw-bold mb-0">Quiz</h2>
-
-          <div class="Quiz">
-            <p>Type the romaji for the character below</p>
-            <br />
-            <div *ngIf="userResult">
-              <div>
-                <p style="color: {{ userResultColor }};">{{ userResult }}</p>
-              </div>
-            </div>
-            <br />
-            <p>Your Score - {{ userScore }}/{{ numberOfQuestions }}</p>
-            <br />
-
-            <form (submit)="checkAnswers()">
-              <h1>{{ data[index].character }}</h1>
+            <div
+              *ngIf="
+                doubleConsonantsSelected == false;
+                else doubleConsonantsisSelected
+              "
+              class="Quiz"
+            >
+              <p>Type the romaji for the character below</p>
               <br />
-              <div *ngIf="answerIsWrong">
-                <h2>{{ data[index].romanization }}</h2>
-                <br />
-              </div>
-              <div
-                style="display: flex; justify-content: center"
-                *ngIf="showAnswerInputBox"
-              >
-                <div class="form-floating">
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="answer"
-                    placeholder="Type here..."
-                    [formControl]="userAnswer"
-                  />
-                  <label for="answer">Type here...</label>
+              <div *ngIf="userResult">
+                <div>
+                  <p style="color: {{ userResultColor }};">{{ userResult }}</p>
                 </div>
-                <!-- oLD Answer field
+              </div>
+              <br />
+              <p>Your Score - {{ userScore }}/{{ numberOfQuestions }}</p>
+              <br />
+
+              <form (submit)="checkAnswers()">
+                <h1>{{ characterData[index].character }}</h1>
+                <br />
+                <div *ngIf="answerIsWrong">
+                  <h2>{{ characterData[index].romanization }}</h2>
+                  <br />
+                </div>
+                <div
+                  style="display: flex; justify-content: center"
+                  *ngIf="showAnswerInputBox"
+                >
+                  <div class="form-floating">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="answer"
+                      placeholder="Type here..."
+                      [formControl]="userAnswer"
+                    />
+                    <label for="answer">Type here...</label>
+                  </div>
+                  <!-- oLD Answer field
               <input
                 label="userAnswer"
                 placeholder="Type here..."
@@ -55,36 +69,109 @@
                 [formControl]="userAnswer"
                 class="form-control"
               />
-              --></div>
+              -->
+                </div>
 
-              <div *ngIf="canClickNext == false; else elseBlock">
-                <div style="text-align: center">
-                  <input
-                    type="submit"
-                    class="btn btn-primary btn-lg study-button mt-5 w-100"
-                    [value]="quizButtonText"
-                  />
+                <div *ngIf="canClickNext == false; else elseBlock">
+                  <div style="text-align: center">
+                    <input
+                      type="submit"
+                      class="btn btn-primary btn-lg study-button mt-5 w-100"
+                      [value]="quizButtonText"
+                    />
+                  </div>
                 </div>
+                <ng-template #elseBlock>
+                  <div style="text-align: center">
+                    <input
+                      title="quizButtonText"
+                      type="button"
+                      class="btn btn-primary btn-lg study-button mt-5 w-100"
+                      (click)="nextQuestion()"
+                      [value]="quizButtonText"
+                    />
+                  </div>
+                </ng-template>
+              </form>
+            </div>
+            <ng-template #doubleConsonantsisSelected>
+              <div class="Quiz">
+                <p>Type the romaji for the character below</p>
+                <br />
+                <div *ngIf="userResult">
+                  <div>
+                    <p style="color: {{ userResultColor }};">
+                      {{ userResult }}
+                    </p>
+                  </div>
+                </div>
+                <br />
+                <p>Your Score - {{ userScore }}/{{ numberOfQuestions }}</p>
+                <br />
+
+                <form (submit)="checkAnswers()">
+                  <h1>{{ doubleConsonantsData[index].word }}</h1>
+                  <br />
+                  <div *ngIf="answerIsWrong">
+                    <h2>{{ doubleConsonantsData[index].romanization }}</h2>
+                    <br />
+                  </div>
+                  <div
+                    style="display: flex; justify-content: center"
+                    *ngIf="showAnswerInputBox"
+                  >
+                    <div class="form-floating">
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="answer"
+                        placeholder="Type here..."
+                        [formControl]="userAnswer"
+                      />
+                      <label for="answer">Type here...</label>
+                    </div>
+                    <!-- oLD Answer field
+              <input
+                label="userAnswer"
+                placeholder="Type here..."
+                type="text"
+                id="answer"
+                name="answer"
+                [formControl]="userAnswer"
+                class="form-control"
+              />
+              -->
+                  </div>
+
+                  <div *ngIf="canClickNext == false; else elseBlock">
+                    <div style="text-align: center">
+                      <input
+                        type="submit"
+                        class="btn btn-primary btn-lg study-button mt-5 w-100"
+                        [value]="quizButtonText"
+                      />
+                    </div>
+                  </div>
+                  <ng-template #elseBlock>
+                    <div style="text-align: center">
+                      <input
+                        title="quizButtonText"
+                        type="button"
+                        class="btn btn-primary btn-lg study-button mt-5 w-100"
+                        (click)="nextQuestion()"
+                        [value]="quizButtonText"
+                      />
+                    </div>
+                  </ng-template>
+                </form>
               </div>
-              <ng-template #elseBlock>
-                <div style="text-align: center">
-                  <input
-                    title="quizButtonText"
-                    type="button"
-                    class="btn btn-primary btn-lg study-button mt-5 w-100"
-                    (click)="nextQuestion()"
-                    [value]="quizButtonText"
-                  />
-                </div>
-              </ng-template>
-            </form>
+            </ng-template>
           </div>
         </div>
       </div>
-    </div>
 
-    <div class="b-example-divider"></div>
-    <!--
+      <div class="b-example-divider"></div>
+      <!--
   <div class="main-containter">
     <div class="quiz-container card">
       <h1>Quiz</h1>
@@ -152,5 +239,7 @@
       ></div>
 </div>
   </div>
-  --></div>
+  -->
+    </div>
+  </ng-template>
 </div>

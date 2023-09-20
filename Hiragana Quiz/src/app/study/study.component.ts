@@ -15,7 +15,15 @@ constructor(private router:Router,private DataService:DataService){
 }
 
 public startStudy(selection:string){
-  this.DataService.getCharactersforGrid(selection);
-  this.router.navigate(['/Question']);
+  if(selection=="Double Consonants"){
+    console.log("Double consontantings")
+    this.DataService.getCharactersforGrid(selection);
+    this.router.navigate(['/Quiz']);
+  }
+  else{
+    this.DataService.getCharactersforGrid(selection);
+    this.router.navigate(['/Question']);
+
+  }
 }
 }

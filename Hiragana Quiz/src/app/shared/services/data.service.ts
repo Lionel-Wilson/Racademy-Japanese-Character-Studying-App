@@ -6,20 +6,32 @@ import { environment } from 'src/environments/environment';
 import { BehaviorSubject,Observable } from 'rxjs';
 import { getDatabase, ref, onValue,  } from "firebase/database";
 import { initializeApp } from 'firebase/app'; // Import initializeApp
+import { DoubleConsonants } from '../Interfaces/double-consonants';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
   private CharactersSubject = new BehaviorSubject<Character[]>([]);
-  public Characters =this.CharactersSubject.asObservable();;
+  public Characters =this.CharactersSubject.asObservable();
 
   public questionCharacters:Character[] =[];
+
+  private DoubleConsonantsSubject = new BehaviorSubject<DoubleConsonants[]>([]);
+  public DoubleConsonantsWords =this.DoubleConsonantsSubject.asObservable();;
+
+  public doubleConsonantsQuestions:DoubleConsonants[] =[];
+  public doubleConsonantsSelected:boolean=false;
+
+
+  private LoadingSubject = new BehaviorSubject<boolean>(true);
+  public isLoading$ =this.LoadingSubject.asObservable();
 
   
 
   constructor(private http: HttpClient) {
     initializeApp(environment.firebase);
+
    }
 
 
@@ -42,7 +54,7 @@ export class DataService {
       this.getHiraganacontracted();
     }
     else if( selection =='Double Consonants'){
-      console.log("Idk what to do with this");
+      this.getDoubleConsonants();
     }
     /*
     this.getHiragana();
@@ -60,6 +72,7 @@ public getHiragana(){
   onValue(hiraganaRef,(snapshot)=>{
     const data = snapshot.val();
     this.CharactersSubject.next(data); // Update the subject
+    console.log(data);
 
 
   })
@@ -108,6 +121,19 @@ public getKatakanaDakuten(){
   onValue(KatakanaDakutenref,(snapshot)=>{
     const data = snapshot.val();
     this.CharactersSubject.next(data); // Update the subject
+
+  })
+}
+public getDoubleConsonants(){
+  this.doubleConsonantsSelected =true;
+  const database = getDatabase();
+  const DoubleConsonantsref = ref(database,'Double Consonants/');
+  onValue(DoubleConsonantsref,(snapshot)=>{
+    const data = snapshot.val();
+    this.DoubleConsonantsSubject.next(data); // Update the subject
+    console.log(data);
+    this.LoadingSubject.next(false);
+
 
   })
 }
