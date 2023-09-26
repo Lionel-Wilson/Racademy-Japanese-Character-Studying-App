@@ -23,7 +23,6 @@ export class QuizComponent {
   public doubleConsonantsData:DoubleConsonants[]=[];
 
   public numberOfQuestions:number = 0; 
-  public configUrl = 'https://localhost:7013/Quiz';
   public userAnswer = new FormControl('');
   public userScore = 0;
   public index = 0;
@@ -90,6 +89,8 @@ public playSound(isMute:boolean,answerIsWrong:boolean ){
 
 public checkAnswers(){
   if(this.doubleConsonantsSelected){
+    console.log("I chose double consonants")
+
   //correct answer
   if(this.doubleConsonantsData[this.index].romanization == this.userAnswer.value?.toLowerCase() && this.canClickNext ==false){
     this.answerIsWrong = false;
@@ -139,12 +140,12 @@ public checkAnswers(){
     this.userResult = "残念！ Better luck next time!";
   }
   }
-
-
   }
 
   public nextQuestion(){
-    if(this.doubleConsonantsData){
+    if(this.doubleConsonantsSelected){
+
+
       if (this.index + 1 <this.doubleConsonantsData.length){
         this.userResult = null;
         this.index += 1;
@@ -177,6 +178,7 @@ public checkAnswers(){
       }
     }
     else{
+
       if (this.index + 1 <this.characterData.length){
         this.userResult = null;
         this.index += 1;
@@ -215,11 +217,5 @@ public checkAnswers(){
   }
 
 
-
-interface QuizItem {
-  id: string;
-  hiragana: string;
-  answer: string;
-}
 
 

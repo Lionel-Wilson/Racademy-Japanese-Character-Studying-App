@@ -74,9 +74,6 @@ public getHiragana(){
     this.CharactersSubject.next(data); // Update the subject
     console.log(data);
     this.LoadingSubject.next(false);
-
-
-
   })
 }
 
