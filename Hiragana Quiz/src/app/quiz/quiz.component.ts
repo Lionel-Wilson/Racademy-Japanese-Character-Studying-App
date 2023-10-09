@@ -55,7 +55,7 @@ export class QuizComponent {
   console.log(this.doubleConsonantsSelected);
   if(this.doubleConsonantsSelected){
     this.DataService.DoubleConsonantsWords.subscribe((response) => {
-      this.doubleConsonantsData = response;
+      this.doubleConsonantsData = this.shuffleArray(response);
     this.numberOfQuestions = this.doubleConsonantsData.length;
 
     });
@@ -212,6 +212,20 @@ public checkAnswers(){
     }
 
 
+  }
+
+  private shuffleArray<T>(array: T[]): T[] {
+    const shuffledArray = [...array]; // Create a shallow copy of the original array
+  
+    for (let i = shuffledArray.length - 1; i > 0; i--) {
+      // Generate a random index between 0 and i
+      const randomIndex = Math.floor(Math.random() * (i + 1));
+  
+      // Swap elements at randomIndex and i
+      [shuffledArray[i], shuffledArray[randomIndex]] = [shuffledArray[randomIndex], shuffledArray[i]];
+    }
+  
+    return shuffledArray;
   }
 
   }
