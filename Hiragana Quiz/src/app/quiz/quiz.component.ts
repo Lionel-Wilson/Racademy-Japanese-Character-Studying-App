@@ -94,7 +94,7 @@ public checkAnswers(){
   //correct answer
   if(this.doubleConsonantsData[this.index].romanization == this.userAnswer.value?.toLowerCase() && this.canClickNext ==false){
     this.answerIsWrong = false;
-    this.playSound(false,this.answerIsWrong);
+    this.playSound(this.DataService.getMuteState(),this.answerIsWrong);
     this.userResult = "正解！ Keep going!";
     this.userResultColor = "green";
     this.userScore+=1;
@@ -106,7 +106,7 @@ public checkAnswers(){
 //wrong answer
   else if(this.doubleConsonantsData[this.index].romanization != this.userAnswer.value?.toLowerCase()){
     this.answerIsWrong = true;
-    this.playSound(false,this.answerIsWrong);
+    this.playSound(this.DataService.getMuteState(),this.answerIsWrong);
     this.canClickNext = true;
     this.showAnswerInputBox = false;
     this.quizButtonText = "Next";
@@ -119,7 +119,7 @@ public checkAnswers(){
   //correct answer
   if(this.characterData[this.index].romanization == this.userAnswer.value?.toLowerCase() && this.canClickNext ==false){
     this.answerIsWrong = false;
-    this.playSound(false,this.answerIsWrong);
+    this.playSound(this.DataService.getMuteState(),this.answerIsWrong);
     this.userResult = "正解！ Keep going!";
     this.userResultColor = "green";
     this.userScore+=1;
@@ -131,7 +131,7 @@ public checkAnswers(){
 //wrong answer
   else if(this.characterData[this.index].romanization != this.userAnswer.value?.toLowerCase()){
     this.answerIsWrong = true;
-    this.playSound(false,this.answerIsWrong);
+    this.playSound(this.DataService.getMuteState(),this.answerIsWrong);
     this.canClickNext = true;
     this.showAnswerInputBox = false;
     this.quizButtonText = "Next";

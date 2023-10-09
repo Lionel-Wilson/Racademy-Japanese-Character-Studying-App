@@ -19,6 +19,7 @@ export class CharacterGridComponent {
 
   public showAlert = false;
   public randomiseEnabled: boolean = false;
+  public muteEnabled: boolean = false;
 
   
 
@@ -87,6 +88,7 @@ public startQuiz(){
     else{
       this.DataService.questionCharacters = this.charactersToBeTestedOn;
     }
+    this.DataService.setMuteState(this.muteEnabled);
     this.router.navigate(['/Quiz']);
   }
   else{

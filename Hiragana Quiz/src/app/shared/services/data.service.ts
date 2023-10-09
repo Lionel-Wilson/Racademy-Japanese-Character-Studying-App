@@ -27,12 +27,23 @@ export class DataService {
   private LoadingSubject = new BehaviorSubject<boolean>(true);
   public isLoading$ =this.LoadingSubject.asObservable();
 
+  public muteEnabled:boolean = false;
+
   
 
   constructor(private http: HttpClient) {
     initializeApp(environment.firebase);
 
    }
+
+  setMuteState(value: boolean) {
+    this.muteEnabled = value;
+  }
+
+  getMuteState() {
+    return this.muteEnabled;
+  }
+
 
 
   public getCharactersforGrid(selection:any){
