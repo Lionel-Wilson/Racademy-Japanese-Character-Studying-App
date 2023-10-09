@@ -55,7 +55,7 @@ export class QuizComponent {
   console.log(this.doubleConsonantsSelected);
   if(this.doubleConsonantsSelected){
     this.DataService.DoubleConsonantsWords.subscribe((response) => {
-      this.doubleConsonantsData = this.shuffleArray(response);
+      this.doubleConsonantsData = this.getFirstXItems(this.shuffleArray(response), 10);
     this.numberOfQuestions = this.doubleConsonantsData.length;
 
     });
@@ -226,6 +226,10 @@ public checkAnswers(){
     }
   
     return shuffledArray;
+  }
+
+  private getFirstXItems<T>(array: T[], x: number): T[] {
+    return array.slice(0, x);
   }
 
   }
