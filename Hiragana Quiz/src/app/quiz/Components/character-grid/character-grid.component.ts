@@ -30,7 +30,7 @@ export class CharacterGridComponent {
 
  
   constructor(private DataService:DataService,private router: Router){
-    this.DataService.Characters.subscribe(response=>{
+    this.DataService.characters$.subscribe(response=>{
       this.formatCharactersForGrid(response);
     })
     

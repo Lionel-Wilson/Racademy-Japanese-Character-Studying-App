@@ -12,29 +12,25 @@ import { DoubleConsonants } from '../Interfaces/double-consonants';
   providedIn: 'root'
 })
 export class DataService {
-  private CharactersSubject = new BehaviorSubject<Character[]>([]);
-  public Characters =this.CharactersSubject.asObservable();
+  private charactersSubject = new BehaviorSubject<Character[]>([]);
+  public characters$ = this.charactersSubject.asObservable();
 
-  public questionCharacters:Character[] =[];
+  public questionCharacters: Character[] = [];
 
-  private DoubleConsonantsSubject = new BehaviorSubject<DoubleConsonants[]>([]);
-  public DoubleConsonantsWords =this.DoubleConsonantsSubject.asObservable();;
+  private doubleConsonantsSubject = new BehaviorSubject<DoubleConsonants[]>([]);
+  public doubleConsonantsWords$ = this.doubleConsonantsSubject.asObservable();
 
-  public doubleConsonantsQuestions:DoubleConsonants[] =[];
-  public doubleConsonantsSelected:boolean=false;
+  public doubleConsonantsQuestions: DoubleConsonants[] = [];
+  public doubleConsonantsSelected = false;
 
+  private loadingSubject = new BehaviorSubject<boolean>(true);
+  public isLoading$ = this.loadingSubject.asObservable();
 
-  private LoadingSubject = new BehaviorSubject<boolean>(true);
-  public isLoading$ =this.LoadingSubject.asObservable();
-
-  public muteEnabled:boolean = false;
-
-  
+  public muteEnabled = false;
 
   constructor(private http: HttpClient) {
     initializeApp(environment.firebase);
-
-   }
+  }
 
   setMuteState(value: boolean) {
     this.muteEnabled = value;
@@ -67,90 +63,47 @@ export class DataService {
     else if( selection =='Double Consonants'){
       this.getDoubleConsonants();
     }
-    /*
-    this.getHiragana();
-    this.getHiraganacontracted()
-    this.getHiraganaDakuten()
-    this.getKatakana()
-    this.getKatakanaContracted();
-    this.getKatakanaDakuten();
-    */
+
 }
 
-public getHiragana(){
+private fetchDataFromDatabase(path: string) {
   const database = getDatabase();
-  const hiraganaRef = ref(database,'Hiragana/');
-  onValue(hiraganaRef,(snapshot)=>{
+  const dataRef = ref(database, path);
+  onValue(dataRef, (snapshot) => {
     const data = snapshot.val();
-    this.CharactersSubject.next(data); // Update the subject
-    console.log(data);
-    this.LoadingSubject.next(false);
-  })
+    this.charactersSubject.next(data);
+    this.loadingSubject.next(false);
+  });
 }
 
-public getHiraganaDakuten(){
-  const database = getDatabase();
-  const hiraganaDakutenRef = ref(database,'Hiragana Dakuten/');
-  onValue(hiraganaDakutenRef,(snapshot)=>{
-    const data = snapshot.val();
-    this.CharactersSubject.next(data); // Update the subject
-    this.LoadingSubject.next(false);
-
-  })
-}
-public getHiraganacontracted(){
-  const database = getDatabase();
-  const HiraganacontractedRef = ref(database,'Hiragana contracted/');
-  onValue(HiraganacontractedRef,(snapshot)=>{
-    const data = snapshot.val();
-    this.CharactersSubject.next(data); // Update the subject
-    this.LoadingSubject.next(false);
-
-  })
+public getHiragana() {
+  this.fetchDataFromDatabase('Hiragana/');
 }
 
-public getKatakana(){
-  const database = getDatabase();
-  const katakanaRef = ref(database,'Katakana/');
-  onValue(katakanaRef,(snapshot)=>{
-    const data = snapshot.val();
-    this.CharactersSubject.next(data); // Update the subject
-    this.LoadingSubject.next(false);
-
-  })
+public getHiraganaDakuten() {
+  this.fetchDataFromDatabase('Hiragana Dakuten/');
 }
-public getKatakanaContracted(){
-  const database = getDatabase();
-  const KatakanaContractedref = ref(database,'Katakana Contracted/');
-  onValue(KatakanaContractedref,(snapshot)=>{
-    const data = snapshot.val();
-    this.CharactersSubject.next(data); // Update the subject
-    this.LoadingSubject.next(false);
 
-  })
+public getHiraganacontracted() {
+  this.fetchDataFromDatabase('Hiragana contracted/');
 }
-public getKatakanaDakuten(){
-  const database = getDatabase();
-  const KatakanaDakutenref = ref(database,'Katakana Dakuten/');
-  onValue(KatakanaDakutenref,(snapshot)=>{
-    const data = snapshot.val();
-    this.CharactersSubject.next(data); // Update the subject
-    this.LoadingSubject.next(false);
 
-  })
+public getKatakana() {
+  this.fetchDataFromDatabase('Katakana/');
 }
-public getDoubleConsonants(){
-  this.doubleConsonantsSelected =true;
-  const database = getDatabase();
-  const DoubleConsonantsref = ref(database,'Double Consonants/');
-  onValue(DoubleConsonantsref,(snapshot)=>{
-    const data = snapshot.val();
-    this.DoubleConsonantsSubject.next(data); // Update the subject
-    console.log(data);
-    this.LoadingSubject.next(false);
 
-
-  })
+public getKatakanaContracted() {
+  this.fetchDataFromDatabase('Katakana Contracted/');
 }
+
+public getKatakanaDakuten() {
+  this.fetchDataFromDatabase('Katakana Dakuten/');
+}
+
+public getDoubleConsonants() {
+  this.doubleConsonantsSelected = true;
+  this.fetchDataFromDatabase('Double Consonants/');
+}
+
 
 }
