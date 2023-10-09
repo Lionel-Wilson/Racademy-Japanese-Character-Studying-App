@@ -42,39 +42,62 @@ export class DataService {
 
 
 
-  public getCharactersforGrid(selection:any){
-    if(selection == 'Hiragana'){
+  private fetchDataFromDatabase(path: string) {
+    const database = getDatabase();
+    const dataRef = ref(database, path);
+    if(path == 'Double Consonants/'){
+      const database = getDatabase();
+      const DoubleConsonantsref = ref(database,'Double Consonants/');
+      onValue(DoubleConsonantsref,(snapshot)=>{
+        const data = snapshot.val();
+        this.doubleConsonantsSubject.next(data); 
+        this.loadingSubject.next(false);
+        localStorage.setItem(path, JSON.stringify(data));
 
-      this.getHiragana();
-      
+      })
     }
-    else if( selection == 'Katakana'){
-      this.getKatakana();
-    }
-    else if( selection =='Hiragana Dakuten'){
-      this.getHiraganaDakuten();
-    }
-    else if( selection =='Katakana Dakuten'){
-      this.getKatakanaDakuten();
-    }
-    else if( selection =='Contracted Sounds'){
-      this.getHiraganacontracted();
-    }
-    else if( selection =='Double Consonants'){
-      this.getDoubleConsonants();
+    else{
+      onValue(dataRef, (snapshot) => {
+        const data = snapshot.val();
+        this.charactersSubject.next(data);
+        this.loadingSubject.next(false);
+        // Store data in local storage
+        localStorage.setItem(path, JSON.stringify(data));
+      });
     }
 
-}
+  }
 
-private fetchDataFromDatabase(path: string) {
-  const database = getDatabase();
-  const dataRef = ref(database, path);
-  onValue(dataRef, (snapshot) => {
-    const data = snapshot.val();
-    this.charactersSubject.next(data);
-    this.loadingSubject.next(false);
-  });
-}
+  private getDataFromLocalStorage(path: string) {
+    const data = localStorage.getItem(path);
+    return data ? JSON.parse(data) : null;
+  }
+
+  public getCharactersforGrid(selection: string) {
+    const cachedData = this.getDataFromLocalStorage(selection);
+
+    if (cachedData) {
+      // Data found in local storage, use it
+      this.charactersSubject.next(cachedData);
+      this.loadingSubject.next(false);
+    } else {
+
+      // Data not found in local storage, fetch from the database
+      if (selection == 'Hiragana') {
+        this.getHiragana();
+      } else if (selection == 'Katakana') {
+        this.getKatakana();
+      } else if (selection == 'Hiragana Dakuten') {
+        this.getHiraganaDakuten();
+      } else if (selection == 'Katakana Dakuten') {
+        this.getKatakanaDakuten();
+      } else if (selection == 'Contracted Sounds') {
+        this.getHiraganacontracted();
+      } else if (selection == 'Double Consonants') {
+        this.getDoubleConsonants();
+      }
+    }
+  }
 
 public getHiragana() {
   this.fetchDataFromDatabase('Hiragana/');

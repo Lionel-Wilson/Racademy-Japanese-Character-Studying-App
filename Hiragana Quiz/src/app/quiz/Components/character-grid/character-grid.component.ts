@@ -97,7 +97,6 @@ public startQuiz(){
   
 }
 public closeSelectColumnAlert(){
-  console.log(this.showAlert);
   if(this.showAlert){
     this.showAlert = false;
   }

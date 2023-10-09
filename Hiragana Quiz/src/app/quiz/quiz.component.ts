@@ -52,7 +52,6 @@ export class QuizComponent {
   }
 
  public getData(){
-  console.log(this.doubleConsonantsSelected);
   if(this.doubleConsonantsSelected){
     this.DataService.doubleConsonantsWords$.subscribe((response) => {
       this.doubleConsonantsData = this.getFirstXItems(this.shuffleArray(response), 10);
@@ -89,7 +88,6 @@ public playSound(isMute:boolean,answerIsWrong:boolean ){
 
 public checkAnswers(){
   if(this.doubleConsonantsSelected){
-    console.log("I chose double consonants")
 
   //correct answer
   if(this.doubleConsonantsData[this.index].romanization == this.userAnswer.value?.toLowerCase() && this.canClickNext ==false){

@@ -16,7 +16,6 @@ constructor(private router:Router,private DataService:DataService){
 
 public startStudy(selection:string){
   if(selection=="Double Consonants"){
-    console.log("Double consontantings")
     this.DataService.getCharactersforGrid(selection);
     this.router.navigate(['/Quiz']);
   }
