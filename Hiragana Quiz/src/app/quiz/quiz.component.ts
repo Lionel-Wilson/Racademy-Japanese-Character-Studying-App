@@ -67,146 +67,65 @@ export class QuizComponent {
 }
 
 public playSound(isMute:boolean,answerIsWrong:boolean ){
-  if(isMute){
+  if (isMute) {
     return;
   }
-  else{
-    let audio = new Audio();
-    if(answerIsWrong){
-      audio.src = "../../assets/audio/Wrong Answer Sound Effect.mp3";
-    }
-    else{
-      audio.src = "../../assets/audio/CORRECT ANSWER SOUND EFFECT.mp3";
-    }
-
-    audio.load();
-    audio.play();
-  }
+  const audio = new Audio();
+  audio.src = answerIsWrong ? "../../assets/audio/Wrong Answer Sound Effect.mp3" : "../../assets/audio/CORRECT ANSWER SOUND EFFECT.mp3";
+  audio.load();
+  audio.play();
 
 }
 
 
 public checkAnswers(){
-  if(this.doubleConsonantsSelected){
+  const currentData = this.doubleConsonantsSelected ? this.doubleConsonantsData : this.characterData;
 
-  //correct answer
-  if(this.doubleConsonantsData[this.index].romanization == this.userAnswer.value?.toLowerCase() && this.canClickNext ==false){
+  if (currentData[this.index].romanization === this.userAnswer.value?.toLowerCase() && !this.canClickNext) {
     this.answerIsWrong = false;
-    this.playSound(this.DataService.getMuteState(),this.answerIsWrong);
+    this.playSound(this.DataService.getMuteState(), this.answerIsWrong);
     this.userResult = "正解！ Keep going!";
     this.userResultColor = "green";
-    this.userScore+=1;
+    this.userScore += 1;
     this.canClickNext = true;
     this.showAnswerInputBox = false;
     this.quizButtonText = "Next";
     this.userAnswer.reset();
-  }
-//wrong answer
-  else if(this.doubleConsonantsData[this.index].romanization != this.userAnswer.value?.toLowerCase()){
+  } else {
     this.answerIsWrong = true;
-    this.playSound(this.DataService.getMuteState(),this.answerIsWrong);
+    this.playSound(this.DataService.getMuteState(), this.answerIsWrong);
     this.canClickNext = true;
     this.showAnswerInputBox = false;
     this.quizButtonText = "Next";
     this.userAnswer.reset();
     this.userResultColor = "red";
     this.userResult = "残念！ Better luck next time!";
-  }
-  }
-  else{
-  //correct answer
-  if(this.characterData[this.index].romanization == this.userAnswer.value?.toLowerCase() && this.canClickNext ==false){
-    this.answerIsWrong = false;
-    this.playSound(this.DataService.getMuteState(),this.answerIsWrong);
-    this.userResult = "正解！ Keep going!";
-    this.userResultColor = "green";
-    this.userScore+=1;
-    this.canClickNext = true;
-    this.showAnswerInputBox = false;
-    this.quizButtonText = "Next";
-    this.userAnswer.reset();
-  }
-//wrong answer
-  else if(this.characterData[this.index].romanization != this.userAnswer.value?.toLowerCase()){
-    this.answerIsWrong = true;
-    this.playSound(this.DataService.getMuteState(),this.answerIsWrong);
-    this.canClickNext = true;
-    this.showAnswerInputBox = false;
-    this.quizButtonText = "Next";
-    this.userAnswer.reset();
-    this.userResultColor = "red";
-    this.userResult = "残念！ Better luck next time!";
-  }
   }
   }
 
   public nextQuestion(){
-    if(this.doubleConsonantsSelected){
-
-
-      if (this.index + 1 <this.doubleConsonantsData.length){
-        this.userResult = null;
-        this.index += 1;
-        this.canClickNext = false;
-        this.showAnswerInputBox = true;
-        this.answerIsWrong = false;
-        this.quizButtonText = "Check Answer";
-      }
-      else if(this.quizButtonText==="Start Again"){
-        //restart game
-        this.userResult = null;
-        this.userResultColor = "";
-        this.userScore = 0;
-        this.canClickNext = false;
-        this.showAnswerInputBox = true;
-        this.quizButtonText = "Check Answer";
-        this.userAnswer = new FormControl('');
-        this.router.navigate(['/Study']);
-        this.answerIsWrong = false;
-  
-     
-      }
-      else{
-        this.quizComplete = true;
-        this.userResult = "EXAM COMPLETE!";
-        this.quizButtonText = "Start Again";
-        this.userResultColor = "gold";
-        //this.canClickNext = false;
-  
-      }
-    }
-    else{
-
-      if (this.index + 1 <this.characterData.length){
-        this.userResult = null;
-        this.index += 1;
-        this.canClickNext = false;
-        this.showAnswerInputBox = true;
-        this.answerIsWrong = false;
-        this.quizButtonText = "Check Answer";
-      }
-      else if(this.quizButtonText==="Start Again"){
-        //restart game
-        this.userResult = null;
-        this.userResultColor = "";
-        this.userScore = 0;
-        this.canClickNext = false;
-        this.showAnswerInputBox = true;
-        this.quizButtonText = "Check Answer";
-        this.userAnswer = new FormControl('');
-        this.router.navigate(['/Study']);
-        this.answerIsWrong = false;
-  
-     
-      }
-      else{
-        this.quizComplete = true;
-        this.userResult = "EXAM COMPLETE!";
-        this.quizButtonText = "Start Again";
-        this.userResultColor = "gold";
-        //this.canClickNext = false;
-  
-      }
+    if (this.index + 1 < this.characterData.length) {
+      this.userResult = null;
+      this.index += 1;
+      this.canClickNext = false;
+      this.showAnswerInputBox = true;
+      this.answerIsWrong = false;
+      this.quizButtonText = "Check Answer";
+    } else if (this.quizButtonText === "Start Again") {
+      this.userResult = null;
+      this.userResultColor = "";
+      this.userScore = 0;
+      this.canClickNext = false;
+      this.showAnswerInputBox = true;
+      this.quizButtonText = "Check Answer";
+      this.userAnswer = new FormControl('');
+      this.router.navigate(['/Study']);
+      this.answerIsWrong = false;
+    } else {
+      this.quizComplete = true;
+      this.userResult = "EXAM COMPLETE!";
+      this.quizButtonText = "Start Again";
+      this.userResultColor = "gold";
     }
 
 
