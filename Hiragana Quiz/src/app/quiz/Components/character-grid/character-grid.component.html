@@ -30,6 +30,20 @@
 </div>
 <br />
 <div class="buttons-div">
+  <div class="form-check form-switch">
+    <input
+      class="form-check-input"
+      type="checkbox"
+      role="switch"
+      id="flexSwitchCheckDefault"
+      [(ngModel)]="randomiseEnabled"
+    />
+    <label class="form-check-label" for="flexSwitchCheckDefault"
+      >Randomise order</label
+    >
+  </div>
+</div>
+<div class="buttons-div">
   <button class="btn btn-primary btn-lg study-button" (click)="startQuiz()">
     Start
   </button>

@@ -18,6 +18,7 @@ export class CharacterGridComponent {
 
 
   public showAlert = false;
+  public randomiseEnabled: boolean = false;
 
   
 
@@ -80,7 +81,12 @@ export class CharacterGridComponent {
 
 public startQuiz(){
   if(this.charactersToBeTestedOn.length > 0){
-    this.DataService.questionCharacters = this.charactersToBeTestedOn;
+    if(this.randomiseEnabled){
+      this.DataService.questionCharacters = this.shuffleArray(this.charactersToBeTestedOn);
+    }
+    else{
+      this.DataService.questionCharacters = this.charactersToBeTestedOn;
+    }
     this.router.navigate(['/Quiz']);
   }
   else{
@@ -93,6 +99,20 @@ public closeSelectColumnAlert(){
   if(this.showAlert){
     this.showAlert = false;
   }
+}
+
+private shuffleArray<T>(array: T[]): T[] {
+  const shuffledArray = [...array]; // Create a shallow copy of the original array
+
+  for (let i = shuffledArray.length - 1; i > 0; i--) {
+    // Generate a random index between 0 and i
+    const randomIndex = Math.floor(Math.random() * (i + 1));
+
+    // Swap elements at randomIndex and i
+    [shuffledArray[i], shuffledArray[randomIndex]] = [shuffledArray[randomIndex], shuffledArray[i]];
+  }
+
+  return shuffledArray;
 }
 
 
