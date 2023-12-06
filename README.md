@@ -52,7 +52,6 @@ Project is: _Complete_
 
 
 ## Room for Improvement
--  Add sound effects
 -  Add a leaderboard
 -  Add profiles
 
